@@ -129,7 +129,6 @@ tr.def td{height:auto;text-align:left;font-weight:400;padding:10px 14px;backgrou
 .met-row .txt{font-size:14px;color:var(--soft)}
 .d{width:16px;height:16px;border-radius:50%;display:inline-block}
 .d-met{background:var(--energetic)}
-.d-achieved{background:var(--energetic)}
 .d-not{background:transparent;box-shadow:inset 0 0 0 2px var(--passionate)}
 .d-close{background:linear-gradient(90deg,var(--limitless) 50%,transparent 50%);box-shadow:inset 0 0 0 2px var(--limitless)}
 .d-partial{background:linear-gradient(90deg,var(--limitless) 50%,transparent 50%);box-shadow:inset 0 0 0 2px var(--limitless)}
@@ -152,7 +151,7 @@ details[open]>summary .chev{transform:rotate(180deg)}
 .g-when:hover{color:var(--fresh)}
 .g-text{flex:1;font-size:15px}
 .badge{display:inline-block;margin-top:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px}
-.b-met,.b-achieved{background:var(--energetic);color:#fff}
+.b-met{background:var(--energetic);color:#fff}
 .b-not{background:var(--passionate);color:#fff}
 .b-close,.b-partial{background:var(--limitless);color:#000}
 .b-dropped{background:var(--gray);color:var(--text)}
@@ -188,12 +187,6 @@ ol.goals{margin:0;padding-left:22px}
 ol.goals li{margin-bottom:12px}
 .quote{border-left:4px solid var(--fresh);padding:6px 0 6px 16px;margin:0 0 12px;font-size:16px;color:var(--text)}
 .quote .by{display:block;font-size:13px;color:var(--soft);margin-top:4px;font-style:normal}
-details.callout{background:rgba(0,173,237,.08);border-radius:20px;box-shadow:inset 4px 0 0 var(--fresh);margin:22px 0}
-details.callout>summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;color:var(--text);font-size:17px}
-details.callout>summary::-webkit-details-marker{display:none}
-.callout-body{padding:0 22px 18px}
-.src{font-size:13px;color:var(--soft);margin:14px 0 6px;font-weight:500}
-.src a{color:var(--fresh)}
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:15px;font-weight:500;padding:13px 22px;border-radius:999px;background:var(--stable);color:#fff}
 .btn.alt{background:var(--surface);color:var(--text)}
@@ -262,7 +255,6 @@ table.mx select.act,table.mx input.act{border-color:var(--fresh);box-shadow:0 0 
    ============================================================ */
 const SP = "https://lushin-my.sharepoint.com/personal/aaron_lushin_com/Documents/Reviews%20for%20Employees/Dan%20Faber/";
 const SH = "https://mail.superhuman.com/dan@lushin.com/thread/";
-const FF = "https://app.fireflies.ai/view/";
 
 const DUTIES = ["New Business Generation","Client Retention","Training","Coaching"];
 const DUTY_KEYS = ["nbg","cr","tr","co"];
@@ -303,13 +295,11 @@ const REVIEWS = [
   reviewed:null,reviewedNote:"First review, so no prior goals.",
   set:["Coaching \u2014 proactively seek it on a daily/weekly basis.","Cookbook executed (cookbook to be determined and set).","Daily journaling around mindset and affirmations."],
   comments:["Overall theme, be in everyone\u2019s faces every day.","Caution on becoming overly creative. Difference between enhancing what exists vs building new.","Behavior Behavior Behavior, Prospecting pie holds a ton of Merit."],
-  links:[{t:"Open review",u:"https://lushin-my.sharepoint.com/personal/dan_lushin_com/Documents/04%20Archives/ALL/Desktop/VISION%20BOARD%202022/Dan%20Faber%20Review%2010_20_21.docx"}],
-  context:[{src:"Jul 27, 2021 AP WIM (summary)",id:"01M0GXAE83BMQ6BE7SZKM3FPCY",pts:["Weekly target set: 10 unique conversations and 2 first-time meetings.","2\u20133 hours of daily outreach alongside coaching work."]}]},
+  links:[{t:"Open review",u:"https://lushin-my.sharepoint.com/personal/dan_lushin_com/Documents/04%20Archives/ALL/Desktop/VISION%20BOARD%202022/Dan%20Faber%20Review%2010_20_21.docx"}]},
 
  {id:"2022-03",missing:true,label:"Spring 2022",short:["Spr","2022"],date:"2022-03-12",
-  note:"No review document found in your inbox or SharePoint. The September 2022 review lists the goals set here, and a March 16, 2022 coaching recording talks through this review.",
-  set:["\u201cIt is September 2022 and I have hit my stride, I have found my groove\u2026 I regularly ask for referrals and schedule talks.\u201d","\u201cI am asking for help with urgency, in growth moments, rather than checking a box. I haunt Aaron and Brian like Halloween.\u201d","\u201cI have consistently journaled affirmations, with a heavy emphasis on selling\u2026 I have recorded a simple audio track of my own affirmations and I listen to them daily.\u201d"],
-  context:[{src:"Mar 16, 2022 coaching session (summary)",id:"01K5QWTPJSZVYBM16GW0HBF57A",pts:["The review called for a refocus on new business development and speaking.","Plan coming out of it: one speaking engagement a month.","Weekly count of referral requests.","Shift daily affirmations from coaching and retention toward new business."]}]},
+  note:"No review document found in your inbox or SharePoint. The September 2022 review lists the goals set here.",
+  set:["\u201cIt is September 2022 and I have hit my stride, I have found my groove\u2026 I regularly ask for referrals and schedule talks.\u201d","\u201cI am asking for help with urgency, in growth moments, rather than checking a box. I haunt Aaron and Brian like Halloween.\u201d","\u201cI have consistently journaled affirmations, with a heavy emphasis on selling\u2026 I have recorded a simple audio track of my own affirmations and I listen to them daily.\u201d"]},
 
  {id:"2022-09",label:"September 2022",short:["Sep","2022"],date:"2022-09-15",evaluator:"BK/AP",
   scores:[2,3,3,3],avg:2.75,st:["maturity","culture"],ot:["communication","decision"],
@@ -317,13 +307,11 @@ const REVIEWS = [
   reviewed:[{g:"Hit my stride in new business; regularly ask for referrals and schedule talks.",o:"met"},{g:"Ask for help with urgency \u2014 \u201chaunt Aaron and Brian like Halloween.\u201d",o:"partial",n:"\u201cImprovement from #2, more of a NO+\u201d"},{g:"Journal affirmations daily; listen to an audio track of them.",o:"not",n:"\u201cFrom a journaling perspective, off and on.\u201d"}],
   set:["Heavy Hitter \u2014 by May 1, 2023, replace the Wiffle Ball bat in my office with the Heavy Hitter bat, hanging next to Emily\u2019s.","Mindset \u2014 focus on the desired state through journaling and the \u201cI am\u201d affirmations app as my phone\u2019s lock screen.","Decisiveness \u2014 recognize the current state, then pick a path and commit. Look for the simplest answer and build from it (Mastery prep and work with Paul)."],
   comments:["Progress is being made for new business \u2014 FOCUS ON PIPELINE.","Speak up, be a participant."],
-  links:[{t:"Open review",u:SP+"Dan%20Faber%20Review%20September%202022.docx"}],
-  context:[{src:"May 5, 2023 coaching session (summary)",id:"01K5QVWXRVH8Q466C7RN51B6Z1",pts:["Heavy Hitter status reached \u2014 the first goal from this review."]}]},
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20Review%20September%202022.docx"}]},
 
  {id:"2023-03",missing:true,label:"Spring 2023",short:["Spr","2023"],date:"2023-03-02",
   note:"No review document found. The September 2022 file was last edited March 2, 2023, so this review may have been done in that same document. The October 2023 review leaves \u201cgoals from last evaluation\u201d blank.",
-  set:[],
-  context:[{src:"May 5, 2023 coaching session (summary)",id:"01K5QVWXRVH8Q466C7RN51B6Z1",pts:["Heavy Hitter status reached, ahead of the May 1 target from the September 2022 goals."]}]},
+  set:[]},
 
  {id:"2023-10",label:"October 2023",short:["Oct","2023"],date:"2023-09-25",evaluator:"BK/AP",
   scores:[4,4,4,4],avg:4.0,st:["coaching","maturity"],ot:["communication","acumen"],
@@ -331,8 +319,7 @@ const REVIEWS = [
   reviewed:null,reviewedNote:"\u201cGoals from last evaluation\u201d left blank on the form.",
   set:["Financial time with Jarod: high-level Lushin financials (COGS vs OpEx and the difference), triggers, budgeting and planning.","Raise the hand in Huddles/Staff meetings. If something doesn\u2019t make sense, say something.","Contribute content/thinking/sessions to the group. No more hiding to avoid feedback, instead put it out there."],
   comments:["First thought is \u201cnot worthy\u201d. Second thought is \u201csecond guessing self\u201d. What are you journaling?","Appreciate the gains.","Watch your calendar, time does not equal impact."],
-  links:[{t:"Open review",u:SP+"Dan%20Faber%20October%202023.docx"}],
-  context:[]},
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20October%202023.docx"}]},
 
  {id:"2024-03",label:"March 2024",short:["Mar","2024"],date:"2024-03-11",evaluator:"BK/AP",
   scores:[4,3,4,4],avg:3.75,st:["coaching","maturity"],ot:["service","communication"],scoreNote:{1:"Client Retention marked 3 with an asterisk \u2014 \u201cmore of a plus.\u201d"},
@@ -340,16 +327,7 @@ const REVIEWS = [
   reviewed:[{g:"Financial time with Jarod.",o:"met"},{g:"Raise the hand in huddles and staff meetings.",o:"met"},{g:"Contribute content, thinking and sessions to the group.",o:"not"}],
   set:["Write 3 new classes before September 15, 2024: Momentum, Intention Part 1, Intention Part 2.","Self-sourced recurring above $50k by September 15, 2024 \u2014 made up of clients who show up strong, stay engaged, and see tangible impact.","Ted Lasso-style speaking up \u2014 listen to the initial instinct until speaking up takes less courage and becomes a muscle."],
   comments:[],
-  links:[{t:"Open review",u:SP+"Dan%20Faber%20March%202024.docx"},{t:"Open recording",u:FF+"uPzHb8AHvQQOT0TS",rec:true}],
-  context:[{src:"March 2024 review recording (transcript)",id:"uPzHb8AHvQQOT0TS",quotes:[
-    ["A three in year three is different than a three in year nine.","Aaron, on how ratings are scored"],
-    ["Do you seek it and do you apply it? \u2026 you do both.","Brian, on whether you\u2019re coachable"],
-    ["You used to do a lot of \u2018well, they\u2019re busy.\u2019 \u2026 I haven\u2019t heard you say that in a long time.","Aaron, on reaching out for help"],
-    ["I think you\u2019re worth more than what you give yourself credit for.","Aaron, on Communication as an opportunity trait"],
-    ["You have to be pushed towards it. You don\u2019t just auto do it.","Brian, on in-the-moment feedback staying a No"],
-    ["All we\u2019re saying is drop the filter.","Brian, on speaking up in group settings"],
-    ["I\u2019m looking to give you permission to be right.","Aaron, on writing classes from your own observations"]
-  ]}]},
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20March%202024.docx"}]},
 
  {id:"2024-09",label:"September 2024",short:["Sep","2024"],date:"2024-09-12",evaluator:"AP",
   scores:[3,3,4,3],avg:3.25,st:["decision","culture"],ot:["service","coaching"],
@@ -357,8 +335,7 @@ const REVIEWS = [
   reviewed:[{g:"Write 3 new classes (Momentum, Intention Part 1 and 2).",o:"not",n:"Your note: \u201cFor #1, I don\u2019t believe in my own ideas.\u201d"},{g:"Self-sourced recurring above $50k.",o:"close",n:"\u201cN (but super close)\u201d"},{g:"Ted Lasso-style speaking up.",o:"met",n:"\u201cYes*\u201d"}],
   set:["Actually complete one class \u2014 one clear lightbulb moment, practical and easy to apply, finished and shared before the March 2025 review. (Aaron\u2019s copy: \u201cCreate the damn classes from above!\u201d)","Level up coaching conversations with clients by seeking specific feedback and applying the advice.","Increase high-level focus and contribution \u2014 include long-term initiatives and Lushin\u2019s top 2024/2025 priorities."],
   comments:["It\u2019s a constant progress not perfection game. How are you finding your voice even more?","How you challenge leaders from here on out will be your key to success and even more referrals!"],
-  links:[{t:"Open review",u:SP+"Dan%20Faber%20Sept%202024.docx"},{t:"Your completed goals",u:"https://lushin-my.sharepoint.com/personal/dan_lushin_com/Documents/Dan%20Faber%20Sept%202024%20(Goals%20Completed).docx",alt:true},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQALeNmGKmfqBKuPew2UcRrV4=",alt:true}],
-  context:[]},
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20Sept%202024.docx"},{t:"Your completed goals",u:"https://lushin-my.sharepoint.com/personal/dan_lushin_com/Documents/Dan%20Faber%20Sept%202024%20(Goals%20Completed).docx",alt:true},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQALeNmGKmfqBKuPew2UcRrV4=",alt:true}]},
 
  {id:"2025-03",label:"March 2025",short:["Mar","2025"],date:"2025-03-14",evaluator:"AP",
   scores:[3,4,3,3],avg:3.25,st:["leadership","maturity"],ot:["recruiting","acumen"],
@@ -366,8 +343,7 @@ const REVIEWS = [
   reviewed:[{g:"Write the classes \u2014 holdover from last review.",o:"not"},{g:"Challenging leaders to the same level as sellers.",o:"met"},{g:"Third goal.",o:"dropped",n:"\u201cAgreed to stick to 2.\u201d"}],
   set:["Proactive help with newbies.","Boost financial acumen (the seethebigpicture.com course).","Bring in 3 new clients attached to intentional prospecting (referral or prospecting efforts)."],
   comments:[],
-  links:[{t:"Open review",u:SP+"Dan%20Faber%20March%202025.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAFMxrDXJi85DkmQVPAnxb-c=",alt:true},{t:"Goal-setting WIM",u:FF+"01JRXBQRM9WX8ZGMAXJ45V7YRX",rec:true,alt:true}],
-  context:[{src:"Apr 7, 2025 AP WIM (summary)",id:"01JRXBQRM9WX8ZGMAXJ45V7YRX",pts:["This is where the three goals were set: help new reps, business acumen course, three new clients before the next review.","Question added to first conversations: \u201cWhat are you trying to figure out?\u201d"]},{src:"Mar 26, 2025 AP WIM (summary)",id:"01JRXBQY31CJKJJ80NVCVTZYMR",pts:["Action item to send the team the \u201cthree big push goals\u201d from this review."]}]},
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20March%202025.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAFMxrDXJi85DkmQVPAnxb-c=",alt:true}]},
 
  {id:"2025-09",label:"September 2025",short:["Sep","2025"],date:"2025-09-15",evaluator:"AP",
   scores:[4,4,3,4],avg:3.75,st:["communication","culture"],ot:["recruiting","decision"],
@@ -375,8 +351,7 @@ const REVIEWS = [
   reviewed:[{g:"Proactive help with newbies.",o:"not",n:"\u201cFor #1 \u2014 this was more about intentional growth of clients vs prospects.\u201d"},{g:"Boost financial acumen.",o:"not"},{g:"Bring in 3 new clients from intentional prospecting.",o:"not"}],
   set:["Now that I finally BOUGHT the Business Acumen course, finish it. Report back 2 examples where it came in handy with clients.","Pick 3 high-potential sellers to pour into. Make them awesome. Ask for referrals (the 2 largest accounts came from this strategy).","Win 2 net-new \u201cideal profile\u201d clients (15\u201335 sellers, they get leads, strong margins)."],
   comments:["Do you give yourself enough credit for burning bridges and being good?","Continue to protect your bandwidth, what\u2019s next?"],
-  links:[{t:"Open review",u:SP+"Dan%20Faber%20September%202025.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAAWdjHiGhnBAt9-pnx0BExU=",alt:true}],
-  context:[{src:"Oct 31, 2025 AP WIM (summary)",id:"01M0GXA69XH1MXKJ53MF1JRCZZ",pts:["Ideal client defined: 15\u201335 sellers, sales-minded CEO, strong lead generation, stable B2B.","Nearly all top clients came through trusted introductions."]}]},
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20September%202025.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAAWdjHiGhnBAt9-pnx0BExU=",alt:true}]},
 
  {id:"2026-03",label:"March 2026",short:["Mar","2026"],date:"2026-03-09",evaluator:"AP",
   scores:[2,3,3,4],avg:3.0,st:["coaching","maturity"],ot:["acumen","decision"],
@@ -384,26 +359,16 @@ const REVIEWS = [
   reviewed:[{g:"Finish the Business Acumen course; report back 2 examples.",o:"met"},{g:"Pick 3 high-potential sellers to pour into; ask for referrals.",o:"met",n:"\u201cY \u2014 Glen, Oliver, Ethan and Scott\u201d"},{g:"Win 2 net-new ideal-profile clients.",o:"not"}],
   set:["Prospecting Machine \u2014 continue weekly meetings with AP, following the cookbook (cookbook may change week to week).","Weekly visualization \u2014 back to the verbal \u201cjournaling\u201d (talking to future self).","Executing multiple good things at once \u2014 be at 80% on 3 things instead of hyperfocus on 1."],
   comments:["Your attitude with past 3 months is MUCH more even keel compared to 3 years ago.","Life s--- on you, wipe yourself off and keep going, you deserve it go get it!"],
-  links:[{t:"Open review",u:SP+"Dan%20Faber%20March%202026.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAHfg_qtiIdRDkI9XvRt4iSw=",alt:true},{t:"Open recording",u:FF+"01KKAC5FD6ZZPG4A3BR8J4899M",rec:true,alt:true}],
-  context:[{src:"March 2026 review recording (summary)",id:"01KKAC5FD6ZZPG4A3BR8J4899M",pts:["New business struggled early in the period, then improved in the last few months.","Strong 2025 retention, with recent declines partly outside your control.","The \u201c18 to 24 month wall\u201d \u2014 when accounts lose momentum and need a fresh approach.","Weekly accountability: more prospecting progress in one week than the prior six months.","Professional maturity: staying calm in adverse conditions, compared with earlier reactions.","Decision making: choose a path fast and iterate instead of stalling on the details.","Long-running pattern of hyperfocus on one area \u2014 source of the 80%-on-3 goal."]}]},
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20March%202026.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAHfg_qtiIdRDkI9XvRt4iSw=",alt:true}]},
 
  {id:"2026-09",label:"September 2026",short:["Sep","2026"],date:"2026-09-10",evaluator:"AP",
   scores:[2,3,3,3],avg:2.75,st:["maturity"],ot:["decision","culture"],
   beh:["E","Y","E","E","Y","Y","Y","Y","Y","E","Y","Y","Y"],
   reviewed:[{g:"Prospecting Machine \u2014 weekly meetings with AP.",o:"unrated"},{g:"Weekly visualization and verbal journaling.",o:"unrated"},{g:"80% on 3 things instead of hyperfocus on 1.",o:"unrated"}],
-  reviewedNote:"Not marked on the form. In the recording, Aaron chose to skip them and focus on the next six months.",
+  reviewedNote:"Not marked on the form.",
   set:["Daily morning Culture tile check. Which one to focus on to help Danny that day?!","Walk around the planet with an abundance mindset.","Be inspired by the what \u201ccould be\u201d in the future."],
   comments:["Future forward convo\u2019s only!","Always remember, if you ever lose faith in yourself that\u2019s ok, plenty of people around you have faith for you!"],
-  links:[{t:"Open review",u:SP+"Dan%20Faber%20September%202026.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAOW11m_Du5VIi1u5BRnecI8=",alt:true},{t:"Open recording",u:FF+"01M26G6XQ29EC0H2VCQBEWXW5G",rec:true,alt:true}],
-  context:[{src:"September 2026 review recording (transcript)",id:"01M26G6XQ29EC0H2VCQBEWXW5G",quotes:[
-    ["I\u2019ve never put an opportunity trait in the culture box for somebody before.","Aaron, tying it to the daily culture tile walk-through"],
-    ["I don\u2019t even care about last six month goals\u2026 let\u2019s just focus on next six months.","Aaron"],
-    ["We\u2019re only allowed to put ways of being goals.","Aaron"],
-    ["I\u2019ve been thinking about new business development\u2026 in this like grind factory worker way of thinking. And I don\u2019t think that draws the energy\u2026 That\u2019s a repelling energy.","You"],
-    ["Consistent and forward thinking is what I hear there.","Aaron, after your \u201cI\u201d statements"],
-    ["The comparison game is good when it serves you, but when it masters you, it kills you.","Aaron"],
-    ["Keep your eye on the end goal. But I\u2019m just gonna focus on getting from 5 to 7 and then 7 to 9.","Aaron, on sequential milestones"]
-  ]}]}
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20September%202026.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAOW11m_Du5VIi1u5BRnecI8=",alt:true}]}
 ];
 
 /* Goal threads across reviews. o = met | achieved | not | close | partial | dropped | unrated | open */
@@ -411,7 +376,7 @@ const THEMES = [
  {t:"New business and prospecting",items:[
   ["2021-10","Cookbook executed (cookbook to be determined and set).","unrated"],
   ["2022-03","Hit my stride; regularly ask for referrals and schedule talks.","met"],
-  ["2022-09","Heavy Hitter bat in the office by May 1, 2023.","achieved"],
+  ["2022-09","Heavy Hitter bat in the office by May 1, 2023.","unrated"],
   ["2024-03","Self-sourced recurring above $50k by September 15, 2024.","close"],
   ["2025-03","Bring in 3 new clients from intentional prospecting.","not"],
   ["2025-09","Win 2 net-new ideal-profile clients (15\u201335 sellers).","not"],
@@ -450,7 +415,7 @@ const THEMES = [
    Columns: [career month, yyyy-mm, baseline, collections, active accounts, avg retainer, clients added, clients lost, other associates' avg collections at same career month, running total ahead/behind others] */
 const MONTHS=[[1,"2021-06",1000,525,1,0,1,0,1915,-1390],[2,"2021-07",2500,1100,3,500,2,0,2705,-2995],[3,"2021-08",3000,4435,7,540,4,0,4443,-3003],[4,"2021-09",5000,5220,7,750,1,1,4584,-2366],[5,"2021-10",6000,7500,7,857,0,0,7099,-1966],[6,"2021-11",7000,6000,8,917,1,0,7184,-3150],[7,"2021-12",8000,3600,10,414,3,1,7675,-7225],[8,"2022-01",10000,14450,12,1175,2,0,9323,-2098],[9,"2022-02",12000,13000,14,625,2,0,11496,-594],[10,"2022-03",12000,7775,14,625,1,1,12686,-5505],[11,"2022-04",14000,6790,17,508,4,1,14872,-13587],[12,"2022-05",14000,14900,17,532,1,1,16518,-15205],[13,"2022-06",16000,6225,17,444,1,1,16324,-25305],[14,"2022-07",16000,8000,16,646,1,2,20468,-37772],[15,"2022-08",18000,18124.98,23,663,7,0,16396,-36044],[16,"2022-09",19000,29050,22,737,2,3,19428,-26421],[17,"2022-10",19000,16776,20,899,0,2,20617,-30263],[18,"2022-11",20000,30551,20,1021,3,3,18422,-18133],[19,"2022-12",22000,16400,18,1069,0,2,24073,-25807],[20,"2023-01",20000,20550,17,1388,0,1,20840,-26096],[21,"2023-02",20000,22400,16,1473,0,1,27586,-31282],[22,"2023-03",22500,25152,17,1412,2,1,19894,-26025],[23,"2023-04",22500,24952,16,1768,1,2,26402,-27475],[24,"2023-05",25000,42839,21,1485,5,0,23118,-7754],[25,"2023-06",25000,42652,23,2089,3,1,22703,12195],[26,"2023-07",25000,30550,23,1950,1,1,22326,20419],[27,"2023-08",27000,50150,24,2438,2,1,26310,44258],[28,"2023-09",27000,35900,25,2122,4,3,23810,56348],[29,"2023-10",28000,39950,23,2350,0,2,24311,71987],[30,"2023-11",28000,40950,25,2048,2,0,28684,84254],[31,"2023-12",30000,40400,26,1970,1,0,36464,88190],[32,"2024-01",41667,41630,21,2509,1,6,30207,99613],[33,"2024-02",41667,45930,19,3106,1,3,30194,115348],[34,"2024-03",41667,40130,20,2438,1,0,33560,121918],[35,"2024-04",41667,30380,18,2532,0,2,32176,120122],[36,"2024-05",41667,33880,19,2606,1,0,33902,120100],[37,"2024-06",41667,43280,19,2515,2,2,32869,130511],[38,"2024-07",41667,35930,21,2572,2,0,35231,131210],[39,"2024-08",41667,55545,23,2674,3,1,44064,142691],[40,"2024-09",41667,47380,22,2906,0,1,37591,152480],[41,"2024-10",41667,50305,22,2832,1,1,37045,165739],[42,"2024-11",41667,38155,22,2908,0,0,39605,164289],[43,"2024-12",41667,51305,25,2987,3,0,39723,175871],[44,"2025-01",45500,52054,23,3191,0,2,37966,189960],[45,"2025-02",46000,53155,22,3030,0,1,43211,199904],[46,"2025-03",47000,41755,21,2911,0,1,34963,206696],[47,"2025-04",47500,92005,21,3225,1,1,44966,253736],[48,"2025-05",48500,49955,21,3220,0,0,40876,262815],[49,"2025-06",49000,64538,22,3044,3,2,40781,286572],[50,"2025-07",50000,69955,20,3466,0,2,43769,312758],[51,"2025-08",50500,54330,19,3555,0,1,44351,322737],[52,"2025-09",51500,52330,19,3021,1,1,41264,333803],[53,"2025-10",52000,43720,16,3123,0,3,48187,329337],[54,"2025-11",53000,44830,16,3402,1,1,51870,322296],[55,"2025-12",54000,44650,15,2935,1,2,45737,321210],[56,"2026-01",46961,34930,14,2812,1,2,49575,306565],[57,"2026-02",46711,37930,13,3448,0,1,59279,285216],[58,"2026-03",46715,20780,13,2045,0,0,52314,253682],[59,"2026-04",48113,30430,14,2536,1,0,59281,224831],[60,"2026-05",49566,42330,14,3187,1,1,47635,219527],[61,"2026-06",51202,60630,13,4719,1,2,54988,225168],[62,"2026-07",55461,31985,8,3498,0,0,54363,202790]];
 
-const OUT = {met:"Met",achieved:"Reached (per recording)",not:"Not met",close:"Not met \u2014 super close",partial:"Not met \u2014 improved",dropped:"Dropped",unrated:"Not rated",open:"Current"};
+const OUT = {met:"Met",not:"Not met",close:"Not met \u2014 super close",partial:"Not met \u2014 improved",dropped:"Dropped",unrated:"Not rated",open:"Current"};
 
 const SERIES = [
   {k:"avg",name:"Average",color:"#21245C",dark:"#FFFFFF",off:0},
@@ -478,7 +443,6 @@ const ICONS = {
   reviews:'<svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/><path d="M9 13h8M9 17h6"/></svg>',
   doc:'<svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg>',
   mail:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
-  mic:'<svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg>',
   chev:'<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>'
 };
 
@@ -835,7 +799,6 @@ function vChanges(){
     <li>Peak was October 2023 \u2014 straight 4s.</li>
     <li>New Business Generation moves the average most: ${REAL.map(r=>r.scores[0]).join(", ")}.</li>
     <li>Client Retention, Training and Coaching have stayed between 3 and 4 every review.</li>
-    <li>Ratings are scored against tenure.<span class="q">\u201cA three in year three is different than a three in year nine.\u201d \u2014 Aaron, March 2024</span></li>
   </ul></div>
   <h4 class="blk">The numbers</h4>
   <div class="card"><ul class="pts">${numChanges()}</ul></div>
@@ -846,12 +809,12 @@ function vChanges(){
     <li>Coaching and Development: opportunity in 2021 and September 2024; strong in October 2023, March 2024 and March 2026.</li>
     <li>Decision Making: opportunity in 5 of 9 reviews, including the last three.</li>
     <li>Business and Financial Acumen: opportunity in October 2023, March 2025 and March 2026.</li>
-    <li>Culture: strong four times, then an opportunity in September 2026.<span class="q">\u201cI\u2019ve never put an opportunity trait in the culture box for somebody before.\u201d \u2014 Aaron, tied to the daily culture tile check</span></li>
+    <li>Culture: strong four times, then an opportunity in September 2026.</li>
   </ul></div>
   <h4 class="blk">Behaviors</h4>
   <div class="card"><ul class="pts">
     <li>Yes count out of 13: ${yes}.</li>
-    <li>Candid, in-the-moment feedback: No six reviews in a row (September 2022 \u2013 March 2025), Yes since September 2025.<span class="q">\u201cYou have to be pushed towards it. You don\u2019t just auto do it.\u201d \u2014 Brian, March 2024</span></li>
+    <li>Candid, in-the-moment feedback: No six reviews in a row (September 2022 \u2013 March 2025), Yes since September 2025.</li>
     <li>Managing daily priorities with long-term initiatives: No through September 2024, Yes for three reviews, EHH in September 2026.</li>
     <li>September 2026 is the first review with EHH marks \u2014 four behaviors.</li>
   </ul></div>
@@ -862,12 +825,6 @@ function vChanges(){
     <li>Business acumen went from opportunity trait (October 2023) to a finished course (March 2026).</li>
     <li>Asking for help and coaching others went from \u201cNO+\u201d (2022) to met twice (March 2025, March 2026).</li>
     <li>Goals moved from output targets (classes, recurring, client counts) to ways of being in September 2026.</li>
-  </ul></div>
-  <h4 class="blk">From the recordings</h4>
-  <div class="card"><ul class="pts">
-    <li>Coachability, March 2024.<span class="q">\u201cDo you seek it and do you apply it? \u2026 you do both.\u201d \u2014 Brian</span></li>
-    <li>Self-credit, March 2024 and September 2025.<span class="q">\u201cI think you\u2019re worth more than what you give yourself credit for.\u201d \u2014 Aaron</span></li>
-    <li>How you approach new business, September 2026.<span class="q">\u201cI\u2019ve been thinking about new business development\u2026 in this like grind factory worker way of thinking\u2026 That\u2019s a repelling energy.\u201d \u2014 you</span></li>
   </ul></div>`;
 }
 
@@ -914,13 +871,6 @@ function vReviews(){
     `<a class="rv-row" href="#review/${r.id}"><span><span class="rv-date">${esc(r.label)}</span><span class="rv-sub">Evaluator ${esc(r.evaluator)}</span></span><span class="rv-avg ${scoreCls(Math.round(r.avg))}">${r.avg.toFixed(2)}</span></a>`).join("");
 }
 
-function ctxBlock(r){
-  if(!r.context||!r.context.length) return "";
-  const body=r.context.map(c=>`<div class="src"><a href="${FF+c.id}" target="_blank" rel="noopener">${esc(c.src)}</a></div>`+
-    (c.pts?`<ul class="pts">${c.pts.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>`:"")+
-    (c.quotes?c.quotes.map(q=>`<blockquote class="quote">\u201c${esc(q[0])}\u201d<span class="by">${esc(q[1])}</span></blockquote>`).join(""):"")).join("");
-  return `<details class="callout" ${r.context.some(c=>c.quotes)?"open":""}><summary>From the recordings<span class="chev">${ICONS.chev}</span></summary><div class="callout-body">${body}</div></details>`;
-}
 function vReview(id){
   const r=byId(id); if(!r) return vReviews();
   const i=REVIEWS.indexOf(r), prev=REVIEWS[i-1], next=REVIEWS[i+1];
@@ -928,14 +878,14 @@ function vReview(id){
   if(r.missing){
     return head("g-reviews",r.label+" review","Review document not found") + pn +
       `<div class="note-card">${esc(r.note)}</div>` + numCard(r) +
-      (r.set.length?`<h4 class="blk">Goals set</h4><div class="card"><ol class="goals">${r.set.map(g=>`<li>${esc(g)}</li>`).join("")}</ol></div>`:"") + ctxBlock(r);
+      (r.set.length?`<h4 class="blk">Goals set</h4><div class="card"><ol class="goals">${r.set.map(g=>`<li>${esc(g)}</li>`).join("")}</ol></div>`:"");
   }
   const bars=DUTIES.map((d,k)=>`<div class="bar"><span class="bl">${esc(d)}</span><span class="bt"><span class="bf" style="width:${r.scores[k]/5*100}%;background:${SERIES[k+1].color}"></span></span><span class="bv">${r.scores[k]}</span></div>`).join("");
   const notes=r.scoreNote?Object.values(r.scoreNote).map(n=>`<div class="avg-line">${esc(n)}</div>`).join(""):"";
   const off=BEHAVIORS.map((b,k)=>({b,v:r.beh[k],n:r.behNote&&r.behNote[k]})).filter(x=>x.v!=="Y");
   const behHtml=off.length?`<ul class="pts">${off.map(x=>`<li>${esc(x.b)} \u2014 <b>${x.v==="E"?"EHH":"No"}</b>${x.n?` (${esc(x.n)})`:""}</li>`).join("")}</ul>`:`<p style="margin:0">All 13 marked Yes.</p>`;
   const rev=r.reviewed?`<div class="card">${r.reviewedNote?`<p class="muted" style="margin:0 0 12px;font-size:14px">${esc(r.reviewedNote)}</p>`:""}${r.reviewed.map(g=>`<div class="g-item" style="padding:12px 0"><div class="g-text">${esc(g.g)}<br><span class="badge b-${g.o}">${esc(OUT[g.o])}</span>${g.n?`<span class="q">${esc(g.n)}</span>`:""}</div></div>`).join("")}</div>`:`<div class="note-card">${esc(r.reviewedNote||"")}</div>`;
-  const links=r.links.map(l=>`<a class="btn ${l.alt?"alt":""}" href="${l.u}" target="_blank" rel="noopener">${l.rec?ICONS.mic:l.u.startsWith(SH)?ICONS.mail:ICONS.doc}${esc(l.t)}</a>`).join("");
+  const links=r.links.map(l=>`<a class="btn ${l.alt?"alt":""}" href="${l.u}" target="_blank" rel="noopener">${l.u.startsWith(SH)?ICONS.mail:ICONS.doc}${esc(l.t)}</a>`).join("");
   return head("g-reviews",r.label+" review","Evaluator "+esc(r.evaluator)) + pn + `
   <h4 class="blk" style="margin-top:6px">Ratings</h4>
   <div class="card"><div class="bars">${bars}</div><div class="avg-line">Average <b>${r.avg.toFixed(2)}</b></div>${notes}</div>
@@ -947,7 +897,6 @@ function vReview(id){
   <h4 class="blk">Goals from the last review</h4>${rev}
   <h4 class="blk">Goals set</h4><div class="card"><ol class="goals">${r.set.map(g=>`<li>${esc(g)}</li>`).join("")}</ol></div>
   ${r.comments.length?`<h4 class="blk">Other comments</h4><div class="card">${r.comments.map(c=>`<blockquote class="quote">${esc(c)}</blockquote>`).join("")}</div>`:""}
-  ${ctxBlock(r)}
   <div class="btns">${links}</div>`;
 }
 
