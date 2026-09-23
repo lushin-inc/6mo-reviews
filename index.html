@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dan Faber — Six-Month Reviews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stable:#21245C;--fresh:#00ADED;--energetic:#0045C2;--passionate:#E34554;--fireball:#F05A28;--limitless:#FAB040;
+  --bg:#FFFFFF;--surface:#F3F3F7;--card:#FFFFFF;--gray:#EDEDED;--text:#21245C;--body:#2E3150;--soft:#6A6D88;--line:#E2E3EC;
+  --font:'Poppins',Arial,Helvetica,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D0F2B;--surface:#161942;--card:#161942;--gray:#262A62;--text:#FFFFFF;--body:#E4E5F3;--soft:#A7AACB;--line:#2B2F6B;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D0F2B;--surface:#161942;--card:#161942;--gray:#262A62;--text:#FFFFFF;--body:#E4E5F3;--soft:#A7AACB;--line:#2B2F6B;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--body);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--fresh);outline-offset:3px;border-radius:8px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
+.nav-inner{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;text-decoration:none;font-size:14px;font-weight:500;color:var(--soft);padding:9px 16px;border-radius:999px;white-space:nowrap}
+.nav a:hover{color:var(--text);background:var(--surface)}
+.nav a.on{color:#fff;background:var(--stable)}
+:root[data-theme="dark"] .nav a.on{background:var(--fresh);color:#0D0F2B}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .nav a.on{background:var(--fresh);color:#0D0F2B}}
+
+.wrap{max-width:960px;margin:0 auto;padding:8px 20px 72px}
+
+/* home title */
+.home-title{margin:22px 4px 22px}
+.home-title .who{font-size:15px;font-weight:300;opacity:.85;color:var(--text)}
+.home-title h1{margin:2px 0 0;font-size:26px;font-weight:500;color:var(--text);letter-spacing:-.01em}
+
+/* cards */
+.card{background:var(--surface);border-radius:22px;padding:24px 24px 18px;margin-bottom:22px}
+.card h3{margin:0 0 4px;font-size:18px;font-weight:600;color:var(--text)}
+.card .sub{font-size:14px;color:var(--soft);margin:0 0 10px}
+
+/* tiles */
+.tiles{display:flex;flex-direction:column;gap:16px}
+.tile{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;min-height:168px;padding:28px 30px;border-radius:24px;color:#fff;text-decoration:none;transition:transform .15s ease}
+.tile:hover{transform:translateY(-2px)}
+.tile .t-name{font-size:15px;font-weight:300;opacity:.85;display:block}
+.tile .t-title{font-size:32px;font-weight:600;line-height:1.15;display:block;letter-spacing:-.01em}
+.tile .ico{flex:0 0 auto;width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+.tile .ico svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.g-changes{background:linear-gradient(135deg,#000 0%,var(--stable) 70%);box-shadow:0 18px 34px -16px rgba(33,36,92,.8)}
+.g-scores{background:radial-gradient(circle at 15% 20%,var(--stable) 0%,#1B3F9B 45%,var(--fresh) 120%);box-shadow:0 18px 34px -16px rgba(0,173,237,.6)}
+.g-traits{background:radial-gradient(circle at 15% 20%,var(--energetic) 0%,#0A6FD6 50%,var(--fresh) 115%);box-shadow:0 18px 34px -16px rgba(0,69,194,.6)}
+.g-goals{background:linear-gradient(120deg,var(--fireball) 0%,var(--limitless) 100%);box-shadow:0 18px 34px -16px rgba(240,90,40,.6)}
+.g-reviews{background:linear-gradient(120deg,var(--passionate) 0%,var(--fireball) 100%);box-shadow:0 18px 34px -16px rgba(227,69,84,.6)}
+
+/* section header */
+.sec-head{border-radius:24px;padding:34px 30px;color:#fff;margin:14px 0 24px}
+.sec-head .who{font-size:15px;font-weight:300;opacity:.85}
+.sec-head h2{margin:2px 0 0;font-size:34px;font-weight:600;line-height:1.15;letter-spacing:-.01em}
+.sec-head .meta{margin-top:10px;font-size:15px;opacity:.9}
+
+h4.blk{font-size:20px;font-weight:600;color:var(--text);margin:30px 4px 12px}
+.muted{color:var(--soft)}
+
+/* bullets */
+ul.pts{margin:0;padding:0 0 0 20px}
+ul.pts li{margin:0 0 9px}
+ul.pts li::marker{color:var(--fresh)}
+.q{display:block;margin-top:4px;font-size:15px;color:var(--soft);font-style:italic}
+
+/* chart */
+.chart-wrap{position:relative;width:100%}
+.chart-wrap svg{display:block;width:100%;height:auto}
+.axis-label{font-size:12px;fill:var(--soft);font-family:var(--font)}
+.grid-line{stroke:var(--line);stroke-width:1}
+.pt{cursor:pointer}
+.pt:focus{outline:none}
+.pt:focus circle.dot{stroke:var(--fresh);stroke-width:4}
+.val-label{font-size:12px;font-weight:600;fill:var(--text);font-family:var(--font)}
+.tip{position:absolute;pointer-events:none;background:var(--stable);color:#fff;font-size:13px;line-height:1.45;padding:10px 12px;border-radius:12px;min-width:150px;transform:translate(-50%,-110%);opacity:0;transition:opacity .12s;z-index:5}
+.tip b{font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+.chip{border:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:9px 16px;border-radius:999px;background:var(--card);color:var(--text)}
+.chip .sw{width:12px;height:12px;border-radius:50%}
+.chip[aria-pressed="false"]{opacity:.45}
+.chart-note{font-size:13px;color:var(--soft);margin:8px 2px 0}
+
+/* matrix */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:18px}
+table.mx{border-collapse:separate;border-spacing:4px;width:100%;min-width:720px;font-size:14px}
+table.mx th{font-weight:500;color:var(--soft);font-size:12px;line-height:1.25;text-align:center;padding:4px 2px}
+table.mx th.rowh{text-align:left;color:var(--text);font-size:14px;font-weight:500;padding:8px 10px;min-width:210px;background:var(--card);border-radius:10px}
+table.mx td{text-align:center;height:40px;min-width:52px;border-radius:10px;font-weight:600}
+table.mx td.cnt{background:transparent;color:var(--text);font-weight:500;font-size:13px;min-width:74px}
+.s2{background:var(--passionate);color:#fff}
+.s3{background:var(--gray);color:var(--text)}
+.s4{background:var(--energetic);color:#fff}
+.avgc{background:var(--card);color:var(--text)}
+.st{background:var(--energetic);color:#fff}
+.ot{background:var(--fireball);color:#fff}
+.ee{background:var(--card)}
+.yes{background:var(--card);color:var(--soft);font-weight:400}
+.no{background:var(--passionate);color:#fff}
+.ehh{background:var(--limitless);color:#000}
+tr.clk th.rowh{cursor:pointer}
+tr.clk th.rowh:hover{color:var(--fresh)}
+tr.def td{height:auto;text-align:left;font-weight:400;padding:10px 14px;background:var(--card);color:var(--body);font-size:14px}
+.key{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--soft);margin:10px 4px 0}
+.key span{display:inline-flex;align-items:center;gap:6px}
+.key i{display:inline-block;width:14px;height:14px;border-radius:4px}
+
+/* goals */
+.met-row{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--surface);border-radius:14px;margin-bottom:8px;text-decoration:none}
+.met-row .lbl{flex:0 0 110px;font-weight:500;color:var(--text)}
+.met-row .dots{display:flex;gap:6px;flex:0 0 auto}
+.met-row .txt{font-size:14px;color:var(--soft)}
+.d{width:16px;height:16px;border-radius:50%;display:inline-block}
+.d-met{background:var(--energetic)}
+.d-achieved{background:var(--energetic)}
+.d-not{background:transparent;box-shadow:inset 0 0 0 2px var(--passionate)}
+.d-close{background:linear-gradient(90deg,var(--limitless) 50%,transparent 50%);box-shadow:inset 0 0 0 2px var(--limitless)}
+.d-partial{background:linear-gradient(90deg,var(--limitless) 50%,transparent 50%);box-shadow:inset 0 0 0 2px var(--limitless)}
+.d-dropped{background:var(--gray)}
+.d-unrated{background:transparent;box-shadow:inset 0 0 0 2px var(--soft);opacity:.6}
+.d-open{background:var(--fresh)}
+
+details.theme{background:var(--surface);border-radius:20px;margin-bottom:12px}
+details.theme>summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+details.theme>summary::-webkit-details-marker{display:none}
+details.theme .th-title{font-size:21px;font-weight:600;color:var(--text);display:block}
+details.theme .th-dots{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.chev{flex:0 0 auto;width:36px;height:36px;border-radius:12px;background:var(--card);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.chev svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+details[open]>summary .chev{transform:rotate(180deg)}
+.theme-body{padding:0 24px 20px}
+.g-item{display:flex;gap:14px;padding:14px 0}
+.g-item + .g-item{border-top:1px solid var(--line)}
+.g-when{flex:0 0 96px;font-size:14px;font-weight:600;color:var(--text);text-decoration:none}
+.g-when:hover{color:var(--fresh)}
+.g-text{flex:1;font-size:15px}
+.badge{display:inline-block;margin-top:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px}
+.b-met,.b-achieved{background:var(--energetic);color:#fff}
+.b-not{background:var(--passionate);color:#fff}
+.b-close,.b-partial{background:var(--limitless);color:#000}
+.b-dropped{background:var(--gray);color:var(--text)}
+.b-unrated{background:var(--card);color:var(--soft)}
+.b-open{background:var(--fresh);color:#fff}
+
+/* review list */
+.rv-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;background:var(--surface);border-radius:20px;margin-bottom:10px;text-decoration:none;transition:transform .12s}
+.rv-row:hover{transform:translateX(3px)}
+.rv-row .rv-date{font-size:22px;font-weight:600;color:var(--text);display:block}
+.rv-row .rv-sub{font-size:14px;color:var(--soft);display:block}
+.rv-row .rv-avg{flex:0 0 auto;min-width:74px;text-align:center;font-size:20px;font-weight:600;padding:10px 12px;border-radius:14px}
+.rv-row.missing{background:transparent;box-shadow:inset 0 0 0 2px var(--line)}
+.rv-row.missing .rv-date{color:var(--soft)}
+
+/* review detail */
+.pn{display:flex;justify-content:space-between;gap:10px;margin:-8px 0 18px}
+.pn a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text);background:var(--surface);padding:10px 18px;border-radius:999px}
+.pn a:hover{background:var(--gray)}
+.pn .sp{flex:1}
+.bars{display:flex;flex-direction:column;gap:10px}
+.bar{display:flex;align-items:center;gap:14px}
+.bar .bl{flex:0 0 170px;font-size:15px;color:var(--text)}
+.bar .bt{flex:1;display:block;height:14px;background:var(--card);border-radius:999px;overflow:hidden}
+.bar .bf{display:block;height:100%;border-radius:999px}
+.bar .bv{flex:0 0 36px;text-align:right;font-weight:600;color:var(--text)}
+.avg-line{margin-top:14px;font-size:15px;color:var(--soft)}
+.avg-line b{color:var(--text);font-weight:600}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px}
+.pill{font-size:14px;font-weight:500;padding:8px 14px;border-radius:999px}
+.lbl-s{font-size:14px;font-weight:600;color:var(--text);margin:4px 0 0}
+ol.goals{margin:0;padding-left:22px}
+ol.goals li{margin-bottom:12px}
+.quote{border-left:4px solid var(--fresh);padding:6px 0 6px 16px;margin:0 0 12px;font-size:16px;color:var(--text)}
+.quote .by{display:block;font-size:13px;color:var(--soft);margin-top:4px;font-style:normal}
+details.callout{background:rgba(0,173,237,.08);border-radius:20px;box-shadow:inset 4px 0 0 var(--fresh);margin:22px 0}
+details.callout>summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;color:var(--text);font-size:17px}
+details.callout>summary::-webkit-details-marker{display:none}
+.callout-body{padding:0 22px 18px}
+.src{font-size:13px;color:var(--soft);margin:14px 0 6px;font-weight:500}
+.src a{color:var(--fresh)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:15px;font-weight:500;padding:13px 22px;border-radius:999px;background:var(--stable);color:#fff}
+.btn.alt{background:var(--surface);color:var(--text)}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.note-card{background:var(--surface);border-radius:18px;padding:18px 20px;margin-bottom:18px;color:var(--body)}
+
+@media (max-width:640px){
+  .tile{min-height:140px;padding:24px}
+  .tile .t-title{font-size:26px}
+  .sec-head{padding:28px 22px}
+  .sec-head h2{font-size:28px}
+  .bar .bl{flex-basis:120px;font-size:14px}
+  .g-item{flex-direction:column;gap:4px}
+  .met-row .lbl{flex-basis:84px}
+  .met-row .txt{display:none}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Sections"><div class="nav-inner" id="nav"></div></nav>
+<main class="wrap" id="app"></main>
+
+<script>
+/* ============================================================
+   DATA — to add a new review, add one object to REVIEWS
+   (same shape as the others) and add any new goals to THEMES.
+   ============================================================ */
+const SP = "https://lushin-my.sharepoint.com/personal/aaron_lushin_com/Documents/Reviews%20for%20Employees/Dan%20Faber/";
+const SH = "https://mail.superhuman.com/dan@lushin.com/thread/";
+const FF = "https://app.fireflies.ai/view/";
+
+const DUTIES = ["New Business Generation","Client Retention","Training","Coaching"];
+const DUTY_KEYS = ["nbg","cr","tr","co"];
+
+const TRAITS = [
+  ["service","Passion for Service","Treats internal and external service as essential to Lushin's success and your own."],
+  ["recruiting","Recruiting, Retention and Training","Active in the high-performing environment; motivates and coaches others; stays enthusiastic in adversity."],
+  ["leadership","Leadership","Influences through character rather than title; trusted when critical situations arise."],
+  ["coaching","Coaching and Development","Open to guidance and coaching; gives development to others; active in the Sandler network."],
+  ["communication","Communication","Delivers clear, well-developed ideas in speaking and writing; takes in others' ideas well."],
+  ["acumen","Business and Financial Acumen","Seeks out and uses business and financial information to drive outcomes."],
+  ["decision","Decision Making and Problem Solving","Chooses a course among alternatives; sees current state, the better future state, and the path between."],
+  ["maturity","Professional Maturity","Self-aware; handles business and interpersonal situations in a dignified, responsible way."],
+  ["inclusion","Inclusionism","Firm but fair; welcomes spirited debate; truth over harmony; people feel included."],
+  ["culture","Culture","Embraces Lushin's ethos and behaves consistently with its mission, vision, purpose and values."]
+];
+
+const BEHAVIORS = [
+  "Manages daily priorities and long-term initiatives",
+  "Uses others' expertise across Lushin and Sandler",
+  "Steps out of comfort zone for challenging work",
+  "Adjusts focus across multiple priorities",
+  "Uses the diverse talent of the group",
+  "Gathers data and evidence to gain buy-in",
+  "Gives candid, in-the-moment feedback",
+  "Builds lines of communication within Lushin",
+  "Knows strengths and gaps; has a development plan",
+  "Positive, confident attitude on new challenges",
+  "Facilitates dialog with the team",
+  "Builds relationships across the Sandler network",
+  "Stays out of workplace drama"
+];
+
+const REVIEWS = [
+ {id:"2021-10",label:"October 2021",short:["Oct","2021"],date:"2021-10-20",evaluator:"BK/AP",
+  scores:[2,3,3,3],avg:2.75,st:["service","culture"],ot:["coaching","decision"],
+  beh:["N","N","Y","Y","N","Y","Y","Y","N","Y","N","Y","Y"],behNote:{8:"marked \u201cNo \u00bd\u201d"},
+  reviewed:null,reviewedNote:"First review, so no prior goals.",
+  set:["Coaching \u2014 proactively seek it on a daily/weekly basis.","Cookbook executed (cookbook to be determined and set).","Daily journaling around mindset and affirmations."],
+  comments:["Overall theme, be in everyone\u2019s faces every day.","Caution on becoming overly creative. Difference between enhancing what exists vs building new.","Behavior Behavior Behavior, Prospecting pie holds a ton of Merit."],
+  links:[{t:"Open review",u:"https://lushin-my.sharepoint.com/personal/dan_lushin_com/Documents/04%20Archives/ALL/Desktop/VISION%20BOARD%202022/Dan%20Faber%20Review%2010_20_21.docx"}],
+  context:[{src:"Jul 27, 2021 AP WIM (summary)",id:"01M0GXAE83BMQ6BE7SZKM3FPCY",pts:["Weekly target set: 10 unique conversations and 2 first-time meetings.","2\u20133 hours of daily outreach alongside coaching work."]}]},
+
+ {id:"2022-03",missing:true,label:"Spring 2022",short:["Spr","2022"],date:"2022-03-12",
+  note:"No review document found in your inbox or SharePoint. The September 2022 review lists the goals set here, and a March 16, 2022 coaching recording talks through this review.",
+  set:["\u201cIt is September 2022 and I have hit my stride, I have found my groove\u2026 I regularly ask for referrals and schedule talks.\u201d","\u201cI am asking for help with urgency, in growth moments, rather than checking a box. I haunt Aaron and Brian like Halloween.\u201d","\u201cI have consistently journaled affirmations, with a heavy emphasis on selling\u2026 I have recorded a simple audio track of my own affirmations and I listen to them daily.\u201d"],
+  context:[{src:"Mar 16, 2022 coaching session (summary)",id:"01K5QWTPJSZVYBM16GW0HBF57A",pts:["The review called for a refocus on new business development and speaking.","Plan coming out of it: one speaking engagement a month.","Weekly count of referral requests.","Shift daily affirmations from coaching and retention toward new business."]}]},
+
+ {id:"2022-09",label:"September 2022",short:["Sep","2022"],date:"2022-09-15",evaluator:"BK/AP",
+  scores:[2,3,3,3],avg:2.75,st:["maturity","culture"],ot:["communication","decision"],
+  beh:["N","Y","Y","N","Y","Y","N","Y","N","N","Y","Y","Y"],
+  reviewed:[{g:"Hit my stride in new business; regularly ask for referrals and schedule talks.",o:"met"},{g:"Ask for help with urgency \u2014 \u201chaunt Aaron and Brian like Halloween.\u201d",o:"partial",n:"\u201cImprovement from #2, more of a NO+\u201d"},{g:"Journal affirmations daily; listen to an audio track of them.",o:"not",n:"\u201cFrom a journaling perspective, off and on.\u201d"}],
+  set:["Heavy Hitter \u2014 by May 1, 2023, replace the Wiffle Ball bat in my office with the Heavy Hitter bat, hanging next to Emily\u2019s.","Mindset \u2014 focus on the desired state through journaling and the \u201cI am\u201d affirmations app as my phone\u2019s lock screen.","Decisiveness \u2014 recognize the current state, then pick a path and commit. Look for the simplest answer and build from it (Mastery prep and work with Paul)."],
+  comments:["Progress is being made for new business \u2014 FOCUS ON PIPELINE.","Speak up, be a participant."],
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20Review%20September%202022.docx"}],
+  context:[{src:"May 5, 2023 coaching session (summary)",id:"01K5QVWXRVH8Q466C7RN51B6Z1",pts:["Heavy Hitter status reached \u2014 the first goal from this review."]}]},
+
+ {id:"2023-03",missing:true,label:"Spring 2023",short:["Spr","2023"],date:"2023-03-02",
+  note:"No review document found. The September 2022 file was last edited March 2, 2023, so this review may have been done in that same document. The October 2023 review leaves \u201cgoals from last evaluation\u201d blank.",
+  set:[],
+  context:[{src:"May 5, 2023 coaching session (summary)",id:"01K5QVWXRVH8Q466C7RN51B6Z1",pts:["Heavy Hitter status reached, ahead of the May 1 target from the September 2022 goals."]}]},
+
+ {id:"2023-10",label:"October 2023",short:["Oct","2023"],date:"2023-09-25",evaluator:"BK/AP",
+  scores:[4,4,4,4],avg:4.0,st:["coaching","maturity"],ot:["communication","acumen"],
+  beh:["N","Y","Y","Y","Y","Y","N","Y","Y","Y","Y","Y","Y"],
+  reviewed:null,reviewedNote:"\u201cGoals from last evaluation\u201d left blank on the form.",
+  set:["Financial time with Jarod: high-level Lushin financials (COGS vs OpEx and the difference), triggers, budgeting and planning.","Raise the hand in Huddles/Staff meetings. If something doesn\u2019t make sense, say something.","Contribute content/thinking/sessions to the group. No more hiding to avoid feedback, instead put it out there."],
+  comments:["First thought is \u201cnot worthy\u201d. Second thought is \u201csecond guessing self\u201d. What are you journaling?","Appreciate the gains.","Watch your calendar, time does not equal impact."],
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20October%202023.docx"}],
+  context:[]},
+
+ {id:"2024-03",label:"March 2024",short:["Mar","2024"],date:"2024-03-11",evaluator:"BK/AP",
+  scores:[4,3,4,4],avg:3.75,st:["coaching","maturity"],ot:["service","communication"],scoreNote:{1:"Client Retention marked 3 with an asterisk \u2014 \u201cmore of a plus.\u201d"},
+  beh:["N","Y","Y","Y","Y","Y","N","Y","Y","Y","Y","Y","Y"],
+  reviewed:[{g:"Financial time with Jarod.",o:"met"},{g:"Raise the hand in huddles and staff meetings.",o:"met"},{g:"Contribute content, thinking and sessions to the group.",o:"not"}],
+  set:["Write 3 new classes before September 15, 2024: Momentum, Intention Part 1, Intention Part 2.","Self-sourced recurring above $50k by September 15, 2024 \u2014 made up of clients who show up strong, stay engaged, and see tangible impact.","Ted Lasso-style speaking up \u2014 listen to the initial instinct until speaking up takes less courage and becomes a muscle."],
+  comments:[],
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20March%202024.docx"},{t:"Open recording",u:FF+"uPzHb8AHvQQOT0TS",rec:true}],
+  context:[{src:"March 2024 review recording (transcript)",id:"uPzHb8AHvQQOT0TS",quotes:[
+    ["A three in year three is different than a three in year nine.","Aaron, on how ratings are scored"],
+    ["Do you seek it and do you apply it? \u2026 you do both.","Brian, on whether you\u2019re coachable"],
+    ["You used to do a lot of \u2018well, they\u2019re busy.\u2019 \u2026 I haven\u2019t heard you say that in a long time.","Aaron, on reaching out for help"],
+    ["I think you\u2019re worth more than what you give yourself credit for.","Aaron, on Communication as an opportunity trait"],
+    ["You have to be pushed towards it. You don\u2019t just auto do it.","Brian, on in-the-moment feedback staying a No"],
+    ["All we\u2019re saying is drop the filter.","Brian, on speaking up in group settings"],
+    ["I\u2019m looking to give you permission to be right.","Aaron, on writing classes from your own observations"]
+  ]}]},
+
+ {id:"2024-09",label:"September 2024",short:["Sep","2024"],date:"2024-09-12",evaluator:"AP",
+  scores:[3,3,4,3],avg:3.25,st:["decision","culture"],ot:["service","coaching"],
+  beh:["N","Y","Y","Y","Y","Y","N","Y","Y","Y","Y","Y","Y"],behNote:{0:"marked with an asterisk",6:"marked with an asterisk"},
+  reviewed:[{g:"Write 3 new classes (Momentum, Intention Part 1 and 2).",o:"not",n:"Your note: \u201cFor #1, I don\u2019t believe in my own ideas.\u201d"},{g:"Self-sourced recurring above $50k.",o:"close",n:"\u201cN (but super close)\u201d"},{g:"Ted Lasso-style speaking up.",o:"met",n:"\u201cYes*\u201d"}],
+  set:["Actually complete one class \u2014 one clear lightbulb moment, practical and easy to apply, finished and shared before the March 2025 review. (Aaron\u2019s copy: \u201cCreate the damn classes from above!\u201d)","Level up coaching conversations with clients by seeking specific feedback and applying the advice.","Increase high-level focus and contribution \u2014 include long-term initiatives and Lushin\u2019s top 2024/2025 priorities."],
+  comments:["It\u2019s a constant progress not perfection game. How are you finding your voice even more?","How you challenge leaders from here on out will be your key to success and even more referrals!"],
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20Sept%202024.docx"},{t:"Your completed goals",u:"https://lushin-my.sharepoint.com/personal/dan_lushin_com/Documents/Dan%20Faber%20Sept%202024%20(Goals%20Completed).docx",alt:true},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQALeNmGKmfqBKuPew2UcRrV4=",alt:true}],
+  context:[]},
+
+ {id:"2025-03",label:"March 2025",short:["Mar","2025"],date:"2025-03-14",evaluator:"AP",
+  scores:[3,4,3,3],avg:3.25,st:["leadership","maturity"],ot:["recruiting","acumen"],
+  beh:["Y","Y","Y","Y","Y","Y","N","Y","Y","Y","Y","Y","Y"],behNote:{6:"marked with an asterisk"},
+  reviewed:[{g:"Write the classes \u2014 holdover from last review.",o:"not"},{g:"Challenging leaders to the same level as sellers.",o:"met"},{g:"Third goal.",o:"dropped",n:"\u201cAgreed to stick to 2.\u201d"}],
+  set:["Proactive help with newbies.","Boost financial acumen (the seethebigpicture.com course).","Bring in 3 new clients attached to intentional prospecting (referral or prospecting efforts)."],
+  comments:[],
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20March%202025.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAFMxrDXJi85DkmQVPAnxb-c=",alt:true},{t:"Goal-setting WIM",u:FF+"01JRXBQRM9WX8ZGMAXJ45V7YRX",rec:true,alt:true}],
+  context:[{src:"Apr 7, 2025 AP WIM (summary)",id:"01JRXBQRM9WX8ZGMAXJ45V7YRX",pts:["This is where the three goals were set: help new reps, business acumen course, three new clients before the next review.","Question added to first conversations: \u201cWhat are you trying to figure out?\u201d"]},{src:"Mar 26, 2025 AP WIM (summary)",id:"01JRXBQY31CJKJJ80NVCVTZYMR",pts:["Action item to send the team the \u201cthree big push goals\u201d from this review."]}]},
+
+ {id:"2025-09",label:"September 2025",short:["Sep","2025"],date:"2025-09-15",evaluator:"AP",
+  scores:[4,4,3,4],avg:3.75,st:["communication","culture"],ot:["recruiting","decision"],
+  beh:["Y","Y","Y","Y","Y","Y","Y","Y","Y","Y","Y","Y","Y"],
+  reviewed:[{g:"Proactive help with newbies.",o:"not",n:"\u201cFor #1 \u2014 this was more about intentional growth of clients vs prospects.\u201d"},{g:"Boost financial acumen.",o:"not"},{g:"Bring in 3 new clients from intentional prospecting.",o:"not"}],
+  set:["Now that I finally BOUGHT the Business Acumen course, finish it. Report back 2 examples where it came in handy with clients.","Pick 3 high-potential sellers to pour into. Make them awesome. Ask for referrals (the 2 largest accounts came from this strategy).","Win 2 net-new \u201cideal profile\u201d clients (15\u201335 sellers, they get leads, strong margins)."],
+  comments:["Do you give yourself enough credit for burning bridges and being good?","Continue to protect your bandwidth, what\u2019s next?"],
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20September%202025.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAAWdjHiGhnBAt9-pnx0BExU=",alt:true}],
+  context:[{src:"Oct 31, 2025 AP WIM (summary)",id:"01M0GXA69XH1MXKJ53MF1JRCZZ",pts:["Ideal client defined: 15\u201335 sellers, sales-minded CEO, strong lead generation, stable B2B.","Nearly all top clients came through trusted introductions."]}]},
+
+ {id:"2026-03",label:"March 2026",short:["Mar","2026"],date:"2026-03-09",evaluator:"AP",
+  scores:[2,3,3,4],avg:3.0,st:["coaching","maturity"],ot:["acumen","decision"],
+  beh:["Y","Y","Y","Y","Y","Y","Y","Y","Y","Y","Y","Y","Y"],
+  reviewed:[{g:"Finish the Business Acumen course; report back 2 examples.",o:"met"},{g:"Pick 3 high-potential sellers to pour into; ask for referrals.",o:"met",n:"\u201cY \u2014 Glen, Oliver, Ethan and Scott\u201d"},{g:"Win 2 net-new ideal-profile clients.",o:"not"}],
+  set:["Prospecting Machine \u2014 continue weekly meetings with AP, following the cookbook (cookbook may change week to week).","Weekly visualization \u2014 back to the verbal \u201cjournaling\u201d (talking to future self).","Executing multiple good things at once \u2014 be at 80% on 3 things instead of hyperfocus on 1."],
+  comments:["Your attitude with past 3 months is MUCH more even keel compared to 3 years ago.","Life s--- on you, wipe yourself off and keep going, you deserve it go get it!"],
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20March%202026.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAHfg_qtiIdRDkI9XvRt4iSw=",alt:true},{t:"Open recording",u:FF+"01KKAC5FD6ZZPG4A3BR8J4899M",rec:true,alt:true}],
+  context:[{src:"March 2026 review recording (summary)",id:"01KKAC5FD6ZZPG4A3BR8J4899M",pts:["New business struggled early in the period, then improved in the last few months.","Strong 2025 retention, with recent declines partly outside your control.","The \u201c18 to 24 month wall\u201d \u2014 when accounts lose momentum and need a fresh approach.","Weekly accountability: more prospecting progress in one week than the prior six months.","Professional maturity: staying calm in adverse conditions, compared with earlier reactions.","Decision making: choose a path fast and iterate instead of stalling on the details.","Long-running pattern of hyperfocus on one area \u2014 source of the 80%-on-3 goal."]}]},
+
+ {id:"2026-09",label:"September 2026",short:["Sep","2026"],date:"2026-09-10",evaluator:"AP",
+  scores:[2,3,3,3],avg:2.75,st:["maturity"],ot:["decision","culture"],
+  beh:["E","Y","E","E","Y","Y","Y","Y","Y","E","Y","Y","Y"],
+  reviewed:[{g:"Prospecting Machine \u2014 weekly meetings with AP.",o:"unrated"},{g:"Weekly visualization and verbal journaling.",o:"unrated"},{g:"80% on 3 things instead of hyperfocus on 1.",o:"unrated"}],
+  reviewedNote:"Not marked on the form. In the recording, Aaron chose to skip them and focus on the next six months.",
+  set:["Daily morning Culture tile check. Which one to focus on to help Danny that day?!","Walk around the planet with an abundance mindset.","Be inspired by the what \u201ccould be\u201d in the future."],
+  comments:["Future forward convo\u2019s only!","Always remember, if you ever lose faith in yourself that\u2019s ok, plenty of people around you have faith for you!"],
+  links:[{t:"Open review",u:SP+"Dan%20Faber%20September%202026.docx"},{t:"Open email",u:SH+"AAQkAGFiZTkzNmY1LWRiMzktNGFjNS05ODUwLTRiNjFlMWY5N2MxZAAQAOW11m_Du5VIi1u5BRnecI8=",alt:true},{t:"Open recording",u:FF+"01M26G6XQ29EC0H2VCQBEWXW5G",rec:true,alt:true}],
+  context:[{src:"September 2026 review recording (transcript)",id:"01M26G6XQ29EC0H2VCQBEWXW5G",quotes:[
+    ["I\u2019ve never put an opportunity trait in the culture box for somebody before.","Aaron, tying it to the daily culture tile walk-through"],
+    ["I don\u2019t even care about last six month goals\u2026 let\u2019s just focus on next six months.","Aaron"],
+    ["We\u2019re only allowed to put ways of being goals.","Aaron"],
+    ["I\u2019ve been thinking about new business development\u2026 in this like grind factory worker way of thinking. And I don\u2019t think that draws the energy\u2026 That\u2019s a repelling energy.","You"],
+    ["Consistent and forward thinking is what I hear there.","Aaron, after your \u201cI\u201d statements"],
+    ["The comparison game is good when it serves you, but when it masters you, it kills you.","Aaron"],
+    ["Keep your eye on the end goal. But I\u2019m just gonna focus on getting from 5 to 7 and then 7 to 9.","Aaron, on sequential milestones"]
+  ]}]}
+];
+
+/* Goal threads across reviews. o = met | achieved | not | close | partial | dropped | unrated | open */
+const THEMES = [
+ {t:"New business and prospecting",items:[
+  ["2021-10","Cookbook executed (cookbook to be determined and set).","unrated"],
+  ["2022-03","Hit my stride; regularly ask for referrals and schedule talks.","met"],
+  ["2022-09","Heavy Hitter bat in the office by May 1, 2023.","achieved"],
+  ["2024-03","Self-sourced recurring above $50k by September 15, 2024.","close"],
+  ["2025-03","Bring in 3 new clients from intentional prospecting.","not"],
+  ["2025-09","Win 2 net-new ideal-profile clients (15\u201335 sellers).","not"],
+  ["2026-03","Prospecting Machine \u2014 weekly meetings with AP, following the cookbook.","unrated"]]},
+ {t:"Mindset, journaling and visualization",items:[
+  ["2021-10","Daily journaling around mindset and affirmations.","unrated"],
+  ["2022-03","Journal affirmations daily; listen to an audio track of them.","not"],
+  ["2022-09","Mindset \u2014 desired state; \u201cI am\u201d affirmations app as lock screen.","unrated"],
+  ["2026-03","Weekly visualization \u2014 back to verbal journaling.","unrated"],
+  ["2026-09","Walk around the planet with an abundance mindset.","open"],
+  ["2026-09","Be inspired by the what \u201ccould be\u201d in the future.","open"]]},
+ {t:"Asking for coaching and coaching others",items:[
+  ["2021-10","Coaching \u2014 proactively seek it on a daily/weekly basis.","unrated"],
+  ["2022-03","Ask for help with urgency \u2014 \u201chaunt Aaron and Brian like Halloween.\u201d","partial"],
+  ["2024-09","Level up coaching conversations with clients; seek specific feedback.","met"],
+  ["2025-03","Proactive help with newbies.","not"],
+  ["2025-09","Pick 3 high-potential sellers to pour into; ask for referrals.","met"]]},
+ {t:"Speaking up and sharing your own ideas",items:[
+  ["2023-10","Raise the hand in huddles and staff meetings.","met"],
+  ["2023-10","Contribute content, thinking and sessions to the group.","not"],
+  ["2024-03","Ted Lasso-style speaking up.","met"],
+  ["2024-03","Write 3 new classes: Momentum, Intention Part 1 and 2.","not"],
+  ["2024-09","Actually complete one class.","not"]]},
+ {t:"Business and financial acumen",items:[
+  ["2023-10","Financial time with Jarod \u2014 COGS vs OpEx, triggers, budgeting.","met"],
+  ["2025-03","Boost financial acumen (seethebigpicture.com course).","not"],
+  ["2025-09","Finish the Business Acumen course; report back 2 client examples.","met"]]},
+ {t:"Focus and decisions",items:[
+  ["2022-09","Decisiveness \u2014 pick a path and commit; start from the simplest answer.","unrated"],
+  ["2024-09","Broaden focus to long-term initiatives and Lushin\u2019s top priorities.","dropped"],
+  ["2026-03","80% on 3 things instead of hyperfocus on 1.","unrated"],
+  ["2026-09","Daily morning culture tile check.","open"]]}
+];
+
+const OUT = {met:"Met",achieved:"Reached (per recording)",not:"Not met",close:"Not met \u2014 super close",partial:"Not met \u2014 improved",dropped:"Dropped",unrated:"Not rated",open:"Current"};
+
+const SERIES = [
+  {k:"avg",name:"Average",color:"#21245C",dark:"#FFFFFF",off:0},
+  {k:"nbg",name:"New Business Generation",color:"#F05A28",off:.07,i:0},
+  {k:"cr",name:"Client Retention",color:"#0045C2",off:.025,i:1},
+  {k:"tr",name:"Training",color:"#00ADED",off:-.025,i:2},
+  {k:"co",name:"Coaching",color:"#FAB040",off:-.07,i:3}
+];
+
+/* ============================================================ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const REAL = REVIEWS.filter(r=>!r.missing);
+const byId = id => REVIEWS.find(r=>r.id===id);
+const traitName = k => (TRAITS.find(t=>t[0]===k)||[k,k])[1];
+const isDark = () => document.documentElement.getAttribute("data-theme")==="dark" || (document.documentElement.getAttribute("data-theme")!=="light" && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+const scoreCls = v => v>=4?"s4":v<=2?"s2":"s3";
+
+const ICONS = {
+  changes:'<svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
+  scores:'<svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>',
+  traits:'<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
+  goals:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg>',
+  reviews:'<svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/><path d="M9 13h8M9 17h6"/></svg>',
+  doc:'<svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg>',
+  mail:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+  mic:'<svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg>',
+  chev:'<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>'
+};
+
+const SECTIONS = [
+  {h:"#changes",name:"What changed",cls:"g-changes",ico:"changes"},
+  {h:"#scores",name:"Scores over time",cls:"g-scores",ico:"scores"},
+  {h:"#traits",name:"Traits and behaviors",cls:"g-traits",ico:"traits"},
+  {h:"#goals",name:"Goals",cls:"g-goals",ico:"goals"},
+  {h:"#reviews",name:"Each review",cls:"g-reviews",ico:"reviews"}
+];
+
+function renderNav(active){
+  const items=[{h:"#home",name:"Home"}].concat(SECTIONS);
+  $("#nav").innerHTML = items.map(s=>`<a href="${s.h}" class="${active===s.h?"on":""}">${esc(s.name)}</a>`).join("");
+}
+function head(cls,title,meta){
+  return `<header class="sec-head ${cls}"><div class="who">Dan Faber</div><h2>${esc(title)}</h2>${meta?`<div class="meta">${meta}</div>`:""}</header>`;
+}
+
+/* ---------- chart ---------- */
+function chartSVG(keys,opts={}){
+  const W=900,H=opts.h||340,L=118,R=26,T=34,B=46;
+  const t0=Date.parse("2021-07-01"),t1=Date.parse("2026-12-15");
+  const x=d=>L+(Date.parse(d)-t0)/(t1-t0)*(W-L-R);
+  const y=v=>T+(4.45-v)/(4.45-1.55)*(H-T-B);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Review ratings over time">`;
+  [[2,"2 Opportunity"],[3,"3 Solid"],[4,"4 Exceeds"]].forEach(([v,l])=>{
+    s+=`<line class="grid-line" x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}"/><text class="axis-label" x="${L-14}" y="${y(v)+4}" text-anchor="end">${l}</text>`;
+  });
+  for(let yr=2022;yr<=2026;yr++){
+    const xx=x(yr+"-01-01");
+    s+=`<text class="axis-label" x="${xx}" y="${H-14}" text-anchor="middle">${yr}</text><line class="grid-line" x1="${xx}" x2="${xx}" y1="${H-B+4}" y2="${H-B+10}"/>`;
+  }
+  const dark=isDark();
+  keys.forEach(k=>{
+    const se=SERIES.find(z=>z.k===k); const col=(dark&&se.dark)?se.dark:se.color;
+    const val=r=>k==="avg"?r.avg:r.scores[se.i];
+    const d=REAL.map((r,i)=>(i?"L":"M")+x(r.date).toFixed(1)+","+y(val(r)+se.off).toFixed(1)).join(" ");
+    s+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="${k==="avg"?4:3}" stroke-linejoin="round" stroke-linecap="round" opacity="${k==="avg"?1:.92}"/>`;
+  });
+  // missing markers
+  REVIEWS.filter(r=>r.missing).forEach(r=>{
+    const xx=x(r.date);
+    s+=`<a href="#review/${r.id}" class="pt" data-id="${r.id}" aria-label="${esc(r.label)} review — document not found"><line x1="${xx}" x2="${xx}" y1="${T}" y2="${H-B}" stroke="var(--soft)" stroke-dasharray="4 5" opacity=".55"/><circle cx="${xx}" cy="${H-B}" r="8" fill="var(--bg)" stroke="var(--soft)" stroke-width="2" stroke-dasharray="3 3"/></a>`;
+  });
+  // points (use first key for clickable dots; draw dots for all)
+  keys.forEach(k=>{
+    const se=SERIES.find(z=>z.k===k); const col=(dark&&se.dark)?se.dark:se.color;
+    REAL.forEach(r=>{
+      const v=k==="avg"?r.avg:r.scores[se.i];
+      const cx=x(r.date),cy=y(v+se.off);
+      s+=`<a href="#review/${r.id}" class="pt" data-id="${r.id}" aria-label="${esc(r.label)}: ${se.name} ${v}"><circle class="dot" cx="${cx}" cy="${cy}" r="${k==="avg"?8:6}" fill="${col}" stroke="var(--surface)" stroke-width="3"/><circle cx="${cx}" cy="${cy}" r="16" fill="transparent"/></a>`;
+      if(opts.labels&&k==="avg") s+=`<text class="val-label" x="${cx}" y="${cy-16}" text-anchor="middle">${v.toFixed(2).replace(/0$/,"")}</text>`;
+    });
+  });
+  s+=`</svg>`;
+  return s;
+}
+function wireTips(wrap){
+  const tip=document.createElement("div"); tip.className="tip"; wrap.appendChild(tip);
+  wrap.querySelectorAll(".pt").forEach(p=>{
+    const show=()=>{
+      const r=byId(p.dataset.id); const box=wrap.getBoundingClientRect(); const pb=p.getBoundingClientRect();
+      tip.innerHTML = r.missing ? `<b>${esc(r.label)}</b><br>Review document not found` :
+        `<b>${esc(r.label)}</b><br>Average ${r.avg.toFixed(2)}<br>` + DUTIES.map((d,i)=>`${esc(d)}: ${r.scores[i]}`).join("<br>");
+      tip.style.left=(pb.left+pb.width/2-box.left)+"px"; tip.style.top=(pb.top-box.top)+"px"; tip.style.opacity=1;
+    };
+    p.addEventListener("mouseenter",show); p.addEventListener("focus",show);
+    p.addEventListener("mouseleave",()=>tip.style.opacity=0); p.addEventListener("blur",()=>tip.style.opacity=0);
+  });
+}
+
+/* ---------- views ---------- */
+function vHome(){
+  return `<div class="home-title"><div class="who">Dan Faber</div><h1>Six-month reviews</h1></div>
+  <section class="card"><h3>Average rating</h3><p class="sub">Tap a point to open that review. Dashed markers are reviews that weren\u2019t found.</p>
+  <div class="chart-wrap" id="c-home">${chartSVG(["avg"],{labels:true,h:300})}</div></section>
+  <div class="tiles">${SECTIONS.map(s=>`<a class="tile ${s.cls}" href="${s.h}"><span><span class="t-name">Dan Faber</span><span class="t-title">${esc(s.name)}</span></span><span class="ico">${ICONS[s.ico]}</span></a>`).join("")}</div>`;
+}
+
+function vChanges(){
+  const yes=REAL.map(r=>r.beh.filter(b=>b==="Y").length).join(", ");
+  return head("g-changes","What changed") + `
+  <h4 class="blk">Scores</h4>
+  <div class="card"><ul class="pts">
+    <li>Average by review: ${REAL.map(r=>r.avg.toFixed(2)).join(", ")}.</li>
+    <li>Peak was October 2023 \u2014 straight 4s.</li>
+    <li>New Business Generation moves the average most: ${REAL.map(r=>r.scores[0]).join(", ")}.</li>
+    <li>Client Retention, Training and Coaching have stayed between 3 and 4 every review.</li>
+    <li>Ratings are scored against tenure.<span class="q">\u201cA three in year three is different than a three in year nine.\u201d \u2014 Aaron, March 2024</span></li>
+  </ul></div>
+  <h4 class="blk">Traits</h4>
+  <div class="card"><ul class="pts">
+    <li>Professional Maturity: strong trait in 6 of 9 reviews, including the last two.<span class="q">\u201cYour attitude with past 3 months is MUCH more even keel compared to 3 years ago.\u201d \u2014 March 2026</span></li>
+    <li>Communication: opportunity trait three reviews running (2022\u20132024), then a strong trait in September 2025.</li>
+    <li>Coaching and Development: opportunity in 2021 and September 2024; strong in October 2023, March 2024 and March 2026.</li>
+    <li>Decision Making: opportunity in 5 of 9 reviews, including the last three.</li>
+    <li>Business and Financial Acumen: opportunity in October 2023, March 2025 and March 2026.</li>
+    <li>Culture: strong four times, then an opportunity in September 2026.<span class="q">\u201cI\u2019ve never put an opportunity trait in the culture box for somebody before.\u201d \u2014 Aaron, tied to the daily culture tile check</span></li>
+  </ul></div>
+  <h4 class="blk">Behaviors</h4>
+  <div class="card"><ul class="pts">
+    <li>Yes count out of 13: ${yes}.</li>
+    <li>Candid, in-the-moment feedback: No six reviews in a row (September 2022 \u2013 March 2025), Yes since September 2025.<span class="q">\u201cYou have to be pushed towards it. You don\u2019t just auto do it.\u201d \u2014 Brian, March 2024</span></li>
+    <li>Managing daily priorities with long-term initiatives: No through September 2024, Yes for three reviews, EHH in September 2026.</li>
+    <li>September 2026 is the first review with EHH marks \u2014 four behaviors.</li>
+  </ul></div>
+  <h4 class="blk">Goals</h4>
+  <div class="card"><ul class="pts">
+    <li>Prospecting and new business appear in 7 of the 10 goal sets.</li>
+    <li>Writing your own classes carried across three reviews and was never marked done.<span class="q">\u201cFor #1, I don\u2019t believe in my own ideas.\u201d \u2014 your note, September 2024</span></li>
+    <li>Business acumen went from opportunity trait (October 2023) to a finished course (March 2026).</li>
+    <li>Asking for help and coaching others went from \u201cNO+\u201d (2022) to met twice (March 2025, March 2026).</li>
+    <li>Goals moved from output targets (classes, recurring, client counts) to ways of being in September 2026.</li>
+  </ul></div>
+  <h4 class="blk">From the recordings</h4>
+  <div class="card"><ul class="pts">
+    <li>Coachability, March 2024.<span class="q">\u201cDo you seek it and do you apply it? \u2026 you do both.\u201d \u2014 Brian</span></li>
+    <li>Self-credit, March 2024 and September 2025.<span class="q">\u201cI think you\u2019re worth more than what you give yourself credit for.\u201d \u2014 Aaron</span></li>
+    <li>How you approach new business, September 2026.<span class="q">\u201cI\u2019ve been thinking about new business development\u2026 in this like grind factory worker way of thinking\u2026 That\u2019s a repelling energy.\u201d \u2014 you</span></li>
+  </ul></div>`;
+}
+
+function vScores(){
+  return head("g-scores","Scores over time") + `
+  <section class="card"><div class="chips" id="chips">${SERIES.map(s=>`<button class="chip" aria-pressed="true" data-k="${s.k}"><span class="sw" style="background:${s.color}"></span>${esc(s.name)}</button>`).join("")}</div>
+  <div class="chart-wrap" id="c-scores"></div>
+  <p class="chart-note">Lines are nudged apart slightly so identical scores stay visible.</p></section>
+  <h4 class="blk">Every rating</h4>
+  <div class="scroll"><table class="mx"><thead><tr><th></th>${REAL.map(r=>`<th>${r.short[0]}<br>${r.short[1]}</th>`).join("")}</tr></thead><tbody>
+  ${DUTIES.map((d,i)=>`<tr><th class="rowh" scope="row">${esc(d)}</th>${REAL.map(r=>`<td class="${scoreCls(r.scores[i])}" title="${esc(r.label)}">${r.scores[i]}${r.scoreNote&&r.scoreNote[i]?"*":""}</td>`).join("")}</tr>`).join("")}
+  <tr><th class="rowh" scope="row">Average</th>${REAL.map(r=>`<td class="avgc">${r.avg.toFixed(2)}</td>`).join("")}</tr>
+  </tbody></table></div>
+  <div class="key"><span><i class="s2"></i>2 Opportunity</span><span><i class="s3"></i>3 Solid</span><span><i class="s4"></i>4 Exceeds</span><span>* March 2024 Client Retention: \u201cmore of a plus\u201d</span></div>`;
+}
+function wireScores(){
+  const on=new Set(SERIES.map(s=>s.k));
+  const draw=()=>{const w=$("#c-scores"); w.innerHTML=chartSVG(SERIES.map(s=>s.k).filter(k=>on.has(k)),{h:360}); wireTips(w);};
+  document.querySelectorAll("#chips .chip").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.k; if(on.has(k)){ if(on.size===1) return; on.delete(k);} else on.add(k);
+    b.setAttribute("aria-pressed",on.has(k)); draw();
+  }));
+  draw();
+}
+
+function vTraits(){
+  const cols=REAL.map(r=>`<th>${r.short[0]}<br>${r.short[1]}</th>`).join("");
+  const traitRows=TRAITS.map(([k,n,def],idx)=>{
+    const stc=REAL.filter(r=>r.st.includes(k)).length, otc=REAL.filter(r=>r.ot.includes(k)).length;
+    const cells=REAL.map(r=>r.st.includes(k)?`<td class="st" title="${esc(r.label)}: strong trait">ST</td>`:r.ot.includes(k)?`<td class="ot" title="${esc(r.label)}: opportunity trait">OT</td>`:`<td class="ee"></td>`).join("");
+    return `<tr class="clk" data-i="${idx}"><th class="rowh" scope="row" tabindex="0" aria-expanded="false">${esc(n)}</th>${cells}<td class="cnt">${stc?stc+" ST":""}${stc&&otc?"<br>":""}${otc?otc+" OT":""}</td></tr><tr class="def" data-d="${idx}" hidden><td colspan="${REAL.length+2}">${esc(def)}</td></tr>`;
+  }).join("");
+  const behRows=BEHAVIORS.map((b,i)=>{
+    const yc=REAL.filter(r=>r.beh[i]==="Y").length;
+    const cells=REAL.map(r=>{const v=r.beh[i];const n=r.behNote&&r.behNote[i]?` (${r.behNote[i]})`:"";
+      return v==="Y"?`<td class="yes" title="${esc(r.label)}: Yes${esc(n)}">Yes</td>`:v==="E"?`<td class="ehh" title="${esc(r.label)}: EHH">Ehh</td>`:`<td class="no" title="${esc(r.label)}: No${esc(n)}">No${n?"*":""}</td>`;}).join("");
+    return `<tr><th class="rowh" scope="row">${esc(b)}</th>${cells}<td class="cnt">${yc} of ${REAL.length}</td></tr>`;
+  }).join("");
+  return head("g-traits","Traits and behaviors") + `
+  <h4 class="blk">Career development traits</h4>
+  <p class="muted" style="margin:-4px 4px 12px;font-size:14px">Tap a trait to see what it means on the form.</p>
+  <div class="scroll"><table class="mx" id="traitTbl"><thead><tr><th></th>${cols}<th></th></tr></thead><tbody>${traitRows}</tbody></table></div>
+  <div class="key"><span><i class="st"></i>Strong trait</span><span><i class="ot"></i>Opportunity trait</span><span>September 2026 has one strong trait marked</span></div>
+  <h4 class="blk">Business management behaviors</h4>
+  <div class="scroll"><table class="mx"><thead><tr><th></th>${cols}<th></th></tr></thead><tbody>${behRows}</tbody></table></div>
+  <div class="key"><span><i class="yes" style="box-shadow:inset 0 0 0 1px var(--line)"></i>Yes</span><span><i class="no"></i>No</span><span><i class="ehh"></i>EHH</span><span>* marked with a note or asterisk on the form</span></div>`;
+}
+function wireTraits(){
+  document.querySelectorAll("#traitTbl tr.clk th").forEach(th=>{
+    const tog=()=>{const i=th.parentElement.dataset.i;const d=document.querySelector(`#traitTbl tr[data-d="${i}"]`);d.hidden=!d.hidden;th.setAttribute("aria-expanded",!d.hidden);};
+    th.addEventListener("click",tog); th.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tog();}});
+  });
+}
+
+function vGoals(){
+  const rows=REVIEWS.filter(r=>r.reviewed&&r.reviewed.length).map(r=>{
+    const scored=r.reviewed.filter(g=>!["unrated","dropped"].includes(g.o));
+    const met=r.reviewed.filter(g=>g.o==="met").length;
+    const txt=scored.length?`${met} of ${scored.length} met`:"Not rated";
+    return `<a class="met-row" href="#review/${r.id}"><span class="lbl">${r.short[0]} ${r.short[1]}</span><span class="dots">${r.reviewed.map(g=>`<i class="d d-${g.o}" title="${esc(OUT[g.o])}"></i>`).join("")}</span><span class="txt">${txt}</span></a>`;
+  }).join("");
+  const themes=THEMES.map(th=>`<details class="theme"><summary><span><span class="th-title">${esc(th.t)}</span><span class="th-dots">${th.items.map(it=>`<i class="d d-${it[2]}" title="${esc(byId(it[0]).label)}: ${esc(OUT[it[2]])}"></i>`).join("")}</span></span><span class="chev">${ICONS.chev}</span></summary>
+    <div class="theme-body">${th.items.map(([id,g,o])=>{const r=byId(id);return `<div class="g-item"><a class="g-when" href="#review/${id}">${r.short[0]} ${r.short[1]}</a><div class="g-text">${esc(g)}<br><span class="badge b-${o}">${esc(OUT[o])}</span></div></div>`;}).join("")}</div></details>`).join("");
+  return head("g-goals","Goals") + `
+  <h4 class="blk">Goals met at each review</h4>${rows}
+  <div class="key" style="margin-bottom:6px"><span><i class="d d-met"></i>Met</span><span><i class="d d-not"></i>Not met</span><span><i class="d d-close"></i>Close or improved</span><span><i class="d d-dropped"></i>Dropped</span><span><i class="d d-unrated"></i>Not rated</span><span><i class="d d-open"></i>Current</span></div>
+  <h4 class="blk">Goals by theme</h4>${themes}`;
+}
+
+function vReviews(){
+  return head("g-reviews","Each review") + [...REVIEWS].reverse().map(r=> r.missing ?
+    `<a class="rv-row missing" href="#review/${r.id}"><span><span class="rv-date">${esc(r.label)}</span><span class="rv-sub">Review document not found</span></span></a>` :
+    `<a class="rv-row" href="#review/${r.id}"><span><span class="rv-date">${esc(r.label)}</span><span class="rv-sub">Evaluator ${esc(r.evaluator)}</span></span><span class="rv-avg ${scoreCls(Math.round(r.avg))}">${r.avg.toFixed(2)}</span></a>`).join("");
+}
+
+function ctxBlock(r){
+  if(!r.context||!r.context.length) return "";
+  const body=r.context.map(c=>`<div class="src"><a href="${FF+c.id}" target="_blank" rel="noopener">${esc(c.src)}</a></div>`+
+    (c.pts?`<ul class="pts">${c.pts.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>`:"")+
+    (c.quotes?c.quotes.map(q=>`<blockquote class="quote">\u201c${esc(q[0])}\u201d<span class="by">${esc(q[1])}</span></blockquote>`).join(""):"")).join("");
+  return `<details class="callout" ${r.context.some(c=>c.quotes)?"open":""}><summary>From the recordings<span class="chev">${ICONS.chev}</span></summary><div class="callout-body">${body}</div></details>`;
+}
+function vReview(id){
+  const r=byId(id); if(!r) return vReviews();
+  const i=REVIEWS.indexOf(r), prev=REVIEWS[i-1], next=REVIEWS[i+1];
+  const pn=`<div class="pn">${prev?`<a href="#review/${prev.id}">\u2190 ${esc(prev.label)}</a>`:""}<span class="sp"></span>${next?`<a href="#review/${next.id}">${esc(next.label)} \u2192</a>`:""}</div>`;
+  if(r.missing){
+    return head("g-reviews",r.label+" review","Review document not found") + pn +
+      `<div class="note-card">${esc(r.note)}</div>` +
+      (r.set.length?`<h4 class="blk">Goals set</h4><div class="card"><ol class="goals">${r.set.map(g=>`<li>${esc(g)}</li>`).join("")}</ol></div>`:"") + ctxBlock(r);
+  }
+  const bars=DUTIES.map((d,k)=>`<div class="bar"><span class="bl">${esc(d)}</span><span class="bt"><span class="bf" style="width:${r.scores[k]/5*100}%;background:${SERIES[k+1].color}"></span></span><span class="bv">${r.scores[k]}</span></div>`).join("");
+  const notes=r.scoreNote?Object.values(r.scoreNote).map(n=>`<div class="avg-line">${esc(n)}</div>`).join(""):"";
+  const off=BEHAVIORS.map((b,k)=>({b,v:r.beh[k],n:r.behNote&&r.behNote[k]})).filter(x=>x.v!=="Y");
+  const behHtml=off.length?`<ul class="pts">${off.map(x=>`<li>${esc(x.b)} \u2014 <b>${x.v==="E"?"EHH":"No"}</b>${x.n?` (${esc(x.n)})`:""}</li>`).join("")}</ul>`:`<p style="margin:0">All 13 marked Yes.</p>`;
+  const rev=r.reviewed?`<div class="card">${r.reviewedNote?`<p class="muted" style="margin:0 0 12px;font-size:14px">${esc(r.reviewedNote)}</p>`:""}${r.reviewed.map(g=>`<div class="g-item" style="padding:12px 0"><div class="g-text">${esc(g.g)}<br><span class="badge b-${g.o}">${esc(OUT[g.o])}</span>${g.n?`<span class="q">${esc(g.n)}</span>`:""}</div></div>`).join("")}</div>`:`<div class="note-card">${esc(r.reviewedNote||"")}</div>`;
+  const links=r.links.map(l=>`<a class="btn ${l.alt?"alt":""}" href="${l.u}" target="_blank" rel="noopener">${l.rec?ICONS.mic:l.u.startsWith(SH)?ICONS.mail:ICONS.doc}${esc(l.t)}</a>`).join("");
+  return head("g-reviews",r.label+" review","Evaluator "+esc(r.evaluator)) + pn + `
+  <h4 class="blk" style="margin-top:6px">Ratings</h4>
+  <div class="card"><div class="bars">${bars}</div><div class="avg-line">Average <b>${r.avg.toFixed(2)}</b></div>${notes}</div>
+  <h4 class="blk">Traits</h4>
+  <div class="card"><div class="lbl-s">Strong</div><div class="pill-row">${r.st.map(k=>`<span class="pill st">${esc(traitName(k))}</span>`).join("")}</div>
+  <div class="lbl-s">Opportunity</div><div class="pill-row">${r.ot.map(k=>`<span class="pill ot">${esc(traitName(k))}</span>`).join("")}</div></div>
+  <h4 class="blk">Behaviors not marked Yes</h4><div class="card">${behHtml}</div>
+  <h4 class="blk">Goals from the last review</h4>${rev}
+  <h4 class="blk">Goals set</h4><div class="card"><ol class="goals">${r.set.map(g=>`<li>${esc(g)}</li>`).join("")}</ol></div>
+  ${r.comments.length?`<h4 class="blk">Other comments</h4><div class="card">${r.comments.map(c=>`<blockquote class="quote">${esc(c)}</blockquote>`).join("")}</div>`:""}
+  ${ctxBlock(r)}
+  <div class="btns">${links}</div>`;
+}
+
+/* ---------- router ---------- */
+function route(){
+  const h=location.hash||"#home"; let html,wire,navKey=h;
+  if(h.startsWith("#review/")){ html=vReview(h.slice(8)); navKey="#reviews"; }
+  else switch(h){
+    case "#changes": html=vChanges(); break;
+    case "#scores": html=vScores(); wire=wireScores; break;
+    case "#traits": html=vTraits(); wire=wireTraits; break;
+    case "#goals": html=vGoals(); break;
+    case "#reviews": html=vReviews(); break;
+    default: html=vHome(); navKey="#home"; wire=()=>wireTips($("#c-home"));
+  }
+  $("#app").innerHTML=html; renderNav(navKey); if(wire) wire(); window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);
+if(window.matchMedia){ try{ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",route);}catch(e){} }
+new MutationObserver(route).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+route();
+</script>
+</body>
+</html>
