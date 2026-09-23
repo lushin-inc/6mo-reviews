@@ -63,6 +63,7 @@ button{font-family:inherit}
 .g-scores{background:radial-gradient(circle at 15% 20%,var(--stable) 0%,#1B3F9B 45%,var(--fresh) 120%);box-shadow:0 18px 34px -16px rgba(0,173,237,.6)}
 .g-traits{background:radial-gradient(circle at 15% 20%,var(--energetic) 0%,#0A6FD6 50%,var(--fresh) 115%);box-shadow:0 18px 34px -16px rgba(0,69,194,.6)}
 .g-goals{background:linear-gradient(120deg,var(--fireball) 0%,var(--limitless) 100%);box-shadow:0 18px 34px -16px rgba(240,90,40,.6)}
+.g-numbers{background:var(--fresh);box-shadow:0 18px 34px -16px rgba(0,173,237,.7)}
 .g-reviews{background:linear-gradient(120deg,var(--passionate) 0%,var(--fireball) 100%);box-shadow:0 18px 34px -16px rgba(227,69,84,.6)}
 
 /* section header */
@@ -198,6 +199,44 @@ details.callout>summary::-webkit-details-marker{display:none}
 .btn.alt{background:var(--surface);color:var(--text)}
 .btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .note-card{background:var(--surface);border-radius:18px;padding:18px 20px;margin-bottom:18px;color:var(--body)}
+
+/* sortable data tables */
+table.dt{border-collapse:separate;border-spacing:0 6px;width:100%;min-width:760px;font-size:14px}
+table.dt th{text-align:left;font-weight:500;color:var(--soft);font-size:12px;padding:0 10px 4px;white-space:nowrap}
+table.dt th.n,table.dt td.n{text-align:right}
+table.dt td{background:var(--surface);padding:13px 10px;color:var(--text);white-space:nowrap}
+table.dt td:first-child{border-radius:12px 0 0 12px;font-weight:600}
+table.dt td:last-child{border-radius:0 12px 12px 0}
+table.dt a{text-decoration:none}
+table.dt a:hover{color:var(--fresh)}
+.sh{border:0;background:none;padding:6px 4px;margin:0;font:inherit;color:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:4px;border-radius:8px;text-align:inherit}
+.sh:hover{color:var(--text);background:var(--surface)}
+.sh .arr{font-size:11px;color:var(--fresh);min-width:8px}
+.sh.on{color:var(--text);font-weight:600}
+.pos{color:var(--energetic)}
+.neg{color:var(--passionate)}
+:root[data-theme="dark"] .pos{color:var(--fresh)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pos{color:var(--fresh)}}
+.tag{display:inline-block;min-width:28px;text-align:center;font-weight:600;padding:3px 8px;border-radius:8px}
+.kv{display:flex;flex-direction:column}
+.kv div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;font-size:15px}
+.kv div + div{border-top:1px solid var(--line)}
+.kv span:first-child{color:var(--body)}
+.kv span:last-child{font-weight:600;color:var(--text);text-align:right}
+/* matrix controls */
+.mx-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 4px 12px;font-size:14px;color:var(--soft)}
+.mx-tools .clear{border:0;cursor:pointer;font:inherit;font-weight:500;font-size:13px;color:var(--text);background:var(--surface);padding:7px 14px;border-radius:999px}
+.mx-tools .clear:hover{background:var(--gray)}
+table.mx th .sh{font-size:12px;line-height:1.25;justify-content:center;width:100%;flex-direction:column;gap:0}
+table.mx th.rowh .sh{flex-direction:row;justify-content:flex-start;font-size:14px;color:var(--text);font-weight:500;padding:0}
+table.mx tr.frow th{padding:0 0 6px}
+table.mx select,table.mx input{width:100%;font:inherit;font-size:12px;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 4px}
+table.mx input{padding:7px 10px;font-size:13px}
+table.mx select.act,table.mx input.act{border-color:var(--fresh);box-shadow:0 0 0 1px var(--fresh)}
+.colchips .chip{padding:7px 12px;font-size:13px}
+.rv-open{cursor:pointer}
+.rv-open:hover{color:var(--fresh)}
+.empty-row td{background:transparent!important;color:var(--soft);font-weight:400!important;text-align:left!important;padding:14px 10px}
 
 @media (max-width:640px){
   .tile{min-height:140px;padding:24px}
@@ -407,6 +446,10 @@ const THEMES = [
   ["2026-09","Daily morning culture tile check.","open"]]}
 ];
 
+/* From Lushin_Associate_Performance_History - ALL.xlsx, Dan (DF) tab. Month 1 = Jun 2021; data through Jul 2026.
+   Columns: [career month, yyyy-mm, baseline, collections, active accounts, avg retainer, clients added, clients lost, other associates' avg collections at same career month, running total ahead/behind others] */
+const MONTHS=[[1,"2021-06",1000,525,1,0,1,0,1915,-1390],[2,"2021-07",2500,1100,3,500,2,0,2705,-2995],[3,"2021-08",3000,4435,7,540,4,0,4443,-3003],[4,"2021-09",5000,5220,7,750,1,1,4584,-2366],[5,"2021-10",6000,7500,7,857,0,0,7099,-1966],[6,"2021-11",7000,6000,8,917,1,0,7184,-3150],[7,"2021-12",8000,3600,10,414,3,1,7675,-7225],[8,"2022-01",10000,14450,12,1175,2,0,9323,-2098],[9,"2022-02",12000,13000,14,625,2,0,11496,-594],[10,"2022-03",12000,7775,14,625,1,1,12686,-5505],[11,"2022-04",14000,6790,17,508,4,1,14872,-13587],[12,"2022-05",14000,14900,17,532,1,1,16518,-15205],[13,"2022-06",16000,6225,17,444,1,1,16324,-25305],[14,"2022-07",16000,8000,16,646,1,2,20468,-37772],[15,"2022-08",18000,18124.98,23,663,7,0,16396,-36044],[16,"2022-09",19000,29050,22,737,2,3,19428,-26421],[17,"2022-10",19000,16776,20,899,0,2,20617,-30263],[18,"2022-11",20000,30551,20,1021,3,3,18422,-18133],[19,"2022-12",22000,16400,18,1069,0,2,24073,-25807],[20,"2023-01",20000,20550,17,1388,0,1,20840,-26096],[21,"2023-02",20000,22400,16,1473,0,1,27586,-31282],[22,"2023-03",22500,25152,17,1412,2,1,19894,-26025],[23,"2023-04",22500,24952,16,1768,1,2,26402,-27475],[24,"2023-05",25000,42839,21,1485,5,0,23118,-7754],[25,"2023-06",25000,42652,23,2089,3,1,22703,12195],[26,"2023-07",25000,30550,23,1950,1,1,22326,20419],[27,"2023-08",27000,50150,24,2438,2,1,26310,44258],[28,"2023-09",27000,35900,25,2122,4,3,23810,56348],[29,"2023-10",28000,39950,23,2350,0,2,24311,71987],[30,"2023-11",28000,40950,25,2048,2,0,28684,84254],[31,"2023-12",30000,40400,26,1970,1,0,36464,88190],[32,"2024-01",41667,41630,21,2509,1,6,30207,99613],[33,"2024-02",41667,45930,19,3106,1,3,30194,115348],[34,"2024-03",41667,40130,20,2438,1,0,33560,121918],[35,"2024-04",41667,30380,18,2532,0,2,32176,120122],[36,"2024-05",41667,33880,19,2606,1,0,33902,120100],[37,"2024-06",41667,43280,19,2515,2,2,32869,130511],[38,"2024-07",41667,35930,21,2572,2,0,35231,131210],[39,"2024-08",41667,55545,23,2674,3,1,44064,142691],[40,"2024-09",41667,47380,22,2906,0,1,37591,152480],[41,"2024-10",41667,50305,22,2832,1,1,37045,165739],[42,"2024-11",41667,38155,22,2908,0,0,39605,164289],[43,"2024-12",41667,51305,25,2987,3,0,39723,175871],[44,"2025-01",45500,52054,23,3191,0,2,37966,189960],[45,"2025-02",46000,53155,22,3030,0,1,43211,199904],[46,"2025-03",47000,41755,21,2911,0,1,34963,206696],[47,"2025-04",47500,92005,21,3225,1,1,44966,253736],[48,"2025-05",48500,49955,21,3220,0,0,40876,262815],[49,"2025-06",49000,64538,22,3044,3,2,40781,286572],[50,"2025-07",50000,69955,20,3466,0,2,43769,312758],[51,"2025-08",50500,54330,19,3555,0,1,44351,322737],[52,"2025-09",51500,52330,19,3021,1,1,41264,333803],[53,"2025-10",52000,43720,16,3123,0,3,48187,329337],[54,"2025-11",53000,44830,16,3402,1,1,51870,322296],[55,"2025-12",54000,44650,15,2935,1,2,45737,321210],[56,"2026-01",46961,34930,14,2812,1,2,49575,306565],[57,"2026-02",46711,37930,13,3448,0,1,59279,285216],[58,"2026-03",46715,20780,13,2045,0,0,52314,253682],[59,"2026-04",48113,30430,14,2536,1,0,59281,224831],[60,"2026-05",49566,42330,14,3187,1,1,47635,219527],[61,"2026-06",51202,60630,13,4719,1,2,54988,225168],[62,"2026-07",55461,31985,8,3498,0,0,54363,202790]];
+
 const OUT = {met:"Met",achieved:"Reached (per recording)",not:"Not met",close:"Not met \u2014 super close",partial:"Not met \u2014 improved",dropped:"Dropped",unrated:"Not rated",open:"Current"};
 
 const SERIES = [
@@ -431,6 +474,7 @@ const ICONS = {
   scores:'<svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>',
   traits:'<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
   goals:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg>',
+  numbers:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .8-3 2s1.3 1.7 3 2 3 .8 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5M12 6v2M12 16v2"/></svg>',
   reviews:'<svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/><path d="M9 13h8M9 17h6"/></svg>',
   doc:'<svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg>',
   mail:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
@@ -441,6 +485,7 @@ const ICONS = {
 const SECTIONS = [
   {h:"#changes",name:"What changed",cls:"g-changes",ico:"changes"},
   {h:"#scores",name:"Scores over time",cls:"g-scores",ico:"scores"},
+  {h:"#numbers",name:"The numbers",cls:"g-numbers",ico:"numbers"},
   {h:"#traits",name:"Traits and behaviors",cls:"g-traits",ico:"traits"},
   {h:"#goals",name:"Goals",cls:"g-goals",ico:"goals"},
   {h:"#reviews",name:"Each review",cls:"g-reviews",ico:"reviews"}
@@ -507,6 +552,263 @@ function wireTips(wrap){
   });
 }
 
+/* ---------- numbers (DF tab) ---------- */
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const ymLabel=ym=>MON[+ym.slice(5)-1]+" "+ym.slice(0,4);
+const fmt$=v=>(v<0?"\u2212":"")+"$"+Math.abs(Math.round(v)).toLocaleString("en-US");
+const sgn$=v=>(v>=0?"+":"")+fmt$(v);
+const fmtK=v=>{const a=Math.abs(v);const s=a>=1000?(a/1000).toFixed(a>=100000?0:(a>=10000?0:1)).replace(/\.0$/,"")+"k":String(Math.round(a));return (v<0?"\u2212":"")+"$"+s;};
+const MD=MONTHS.map(a=>({m:a[0],ym:a[1],base:a[2],col:a[3],acc:a[4],ret:a[5],cadd:a[6],clost:a[7],peer:a[8],cum:a[9]}));
+const LASTM=MD[MD.length-1];
+const revMonth=r=>{const y=+r.date.slice(0,4),mo=+r.date.slice(5,7);return (y-2021)*12+(mo-6)+1;};
+function period(r){
+  const e=revMonth(r)-1,s=Math.max(1,e-5);
+  const w=MD.filter(x=>x.m>=s&&x.m<=e); if(!w.length) return null;
+  const sum=k=>w.reduce((a,x)=>a+x[k],0);
+  const col=sum("col"),base=sum("base"),peer=sum("peer"),last=w[w.length-1];
+  return {n:w.length,start:w[0].ym,end:last.ym,col,base,pct:col/base*100,peer,vs:col-peer,cadd:sum("cadd"),clost:sum("clost"),acc:last.acc,ret:last.ret,cum:last.cum,
+    short: r.id==="2026-09"?"data runs through July 2026":(w[0].m===1?"your first months at Lushin":"")};
+}
+function numCard(r){
+  const p=period(r); if(!p) return "";
+  const cls=v=>v>=0?"pos":"neg";
+  return `<h4 class="blk">Numbers for this period</h4><div class="card">
+  <p class="muted" style="margin:0 0 6px;font-size:14px">${ymLabel(p.start)} \u2013 ${ymLabel(p.end)}${p.n<6?` \u00b7 ${p.n} months, ${p.short}`:""}</p>
+  <div class="kv">
+   <div><span>Collections</span><span>${fmt$(p.col)}</span></div>
+   <div><span>Baseline</span><span>${fmt$(p.base)}</span></div>
+   <div><span>Collections vs baseline</span><span class="${cls(p.col-p.base)}">${Math.round(p.pct)}%</span></div>
+   <div><span>Other associates at the same career months</span><span>${fmt$(p.peer)}</span></div>
+   <div><span>Ahead or behind them</span><span class="${cls(p.vs)}">${sgn$(p.vs)}</span></div>
+   <div><span>Clients added</span><span>${p.cadd}</span></div>
+   <div><span>Clients lost</span><span>${p.clost}</span></div>
+   <div><span>Active accounts at the end</span><span>${p.acc}</span></div>
+   <div><span>Average retainer at the end</span><span>${fmt$(p.ret)}</span></div>
+   <div><span>Running total vs other associates</span><span class="${cls(p.cum)}">${sgn$(p.cum)}</span></div>
+  </div></div>`;
+}
+
+const NUM_METRICS=[
+ {k:"col",name:"Collections",fmt:fmtK,smooth:true,series:[{k:"col",name:"Collections",color:"#21245C",dark:"#FFFFFF",w:3.5},{k:"base",name:"Baseline",color:"#F05A28",dash:"7 6",w:2.5},{k:"peer",name:"Other associates, same career month",color:"#00ADED",w:2.5}]},
+ {k:"cum",name:"Running total vs other associates",fmt:fmtK,zero:true,series:[{k:"cum",name:"Ahead (+) or behind (\u2212) the other associates' average",color:"#0045C2",dark:"#00ADED",w:3.5}]},
+ {k:"acc",name:"Active accounts",fmt:v=>String(Math.round(v)),series:[{k:"acc",name:"Active accounts",color:"#21245C",dark:"#FFFFFF",w:3.5}]},
+ {k:"ret",name:"Average retainer",fmt:fmtK,skipZero:true,series:[{k:"ret",name:"Average retainer",color:"#F05A28",w:3.5}]}
+];
+function niceTicks(min,max,n=5){const span=max-min||1;const raw=span/n;const mag=Math.pow(10,Math.floor(Math.log10(raw)));const step=[1,2,2.5,5,10].map(f=>f*mag).find(s=>s>=raw);const t=[];for(let v=Math.ceil(min/step)*step;v<=max+1e-9;v+=step)t.push(v);return t;}
+function numChart(metric,smooth){
+  const W=900,H=380,L=74,R=22,T=54,B=40,M1=1,M2=65;
+  const x=m=>L+(m-M1)/(M2-M1)*(W-L-R);
+  const dark=isDark();
+  const vals=se=>MD.map((d,i)=>{let v=d[se.k];if(metric.skipZero&&!v)return null;if(smooth&&metric.smooth){const w=MD.slice(Math.max(0,i-2),i+1);v=w.reduce((a,z)=>a+z[se.k],0)/w.length;}return v;});
+  const all=metric.series.flatMap(se=>vals(se)).filter(v=>v!=null);
+  let lo=metric.zero?Math.min(0,...all):0, hi=Math.max(...all)*1.06;
+  if(metric.zero) lo=lo*1.1;
+  const y=v=>T+(hi-v)/(hi-lo)*(H-T-B);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(metric.name)} by month">`;
+  niceTicks(lo,hi).forEach(v=>{s+=`<line class="grid-line" x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" ${metric.zero&&v===0?'style="stroke:var(--soft);stroke-width:1.5"':""}/><text class="axis-label" x="${L-10}" y="${y(v)+4}" text-anchor="end">${metric.fmt(v)}</text>`;});
+  MD.filter(d=>d.ym.endsWith("-01")).forEach(d=>{s+=`<text class="axis-label" x="${x(d.m)}" y="${H-12}" text-anchor="middle">${d.ym.slice(0,4)}</text>`;});
+  // review markers
+  REVIEWS.forEach(r=>{const xx=x(revMonth(r));const sc=r.missing?null:r.scores[0];
+    s+=`<a href="#review/${r.id}" class="pt" data-rid="${r.id}" aria-label="${esc(r.label)} review"><line x1="${xx}" x2="${xx}" y1="${T-12}" y2="${H-B}" stroke="var(--soft)" stroke-dasharray="3 5" opacity=".5"/>`+
+      (sc?`<circle cx="${xx}" cy="${T-24}" r="12" fill="${sc>=4?"#0045C2":sc<=2?"#E34554":"var(--gray)"}"/><text x="${xx}" y="${T-20}" text-anchor="middle" style="font:600 12px var(--font);fill:${sc===3?"var(--text)":"#fff"}">${sc}</text>`
+          :`<circle cx="${xx}" cy="${T-24}" r="11" fill="var(--bg)" stroke="var(--soft)" stroke-width="2" stroke-dasharray="3 3"/>`)+`</a>`;});
+  metric.series.forEach(se=>{const v=vals(se);const col=(dark&&se.dark)?se.dark:se.color;let d="",pen=false;
+    v.forEach((val,i)=>{if(val==null){pen=false;return;}d+=(pen?"L":"M")+x(MD[i].m).toFixed(1)+","+y(val).toFixed(1)+" ";pen=true;});
+    s+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="${se.w}" ${se.dash?`stroke-dasharray="${se.dash}"`:""} stroke-linejoin="round" stroke-linecap="round"/>`;});
+  // hover strips
+  const bw=(W-L-R)/(M2-M1);
+  MD.forEach(d=>{s+=`<rect class="hov" data-m="${d.m}" x="${x(d.m)-bw/2}" y="${T}" width="${bw}" height="${H-T-B}" fill="transparent"/>`;});
+  s+=`<line id="xhair" x1="0" x2="0" y1="${T}" y2="${H-B}" stroke="var(--fresh)" stroke-width="1.5" opacity="0"/></svg>`;
+  return s;
+}
+function wireNumChart(wrap,metric,smooth){
+  const tip=document.createElement("div");tip.className="tip";wrap.appendChild(tip);
+  const xh=wrap.querySelector("#xhair");
+  wrap.querySelectorAll(".hov").forEach(rc=>{
+    rc.addEventListener("mouseenter",()=>{const d=MD[+rc.dataset.m-1];const box=wrap.getBoundingClientRect(),b=rc.getBoundingClientRect();
+      const val=k=>{if(smooth&&metric.smooth){const i=d.m-1,w=MD.slice(Math.max(0,i-2),i+1);return w.reduce((a,z)=>a+z[k],0)/w.length;}return d[k];};
+      tip.innerHTML=`<b>${ymLabel(d.ym)}</b> \u00b7 month ${d.m}<br>`+metric.series.map(se=>`${esc(se.name)}: ${metric.k==="acc"?val(se.k):fmt$(val(se.k))}`).join("<br>");
+      tip.style.left=(b.left+b.width/2-box.left)+"px";tip.style.top=(b.top-box.top+40)+"px";tip.style.opacity=1;
+      const cx=rc.x.baseVal.value+rc.width.baseVal.value/2;xh.setAttribute("x1",cx);xh.setAttribute("x2",cx);xh.setAttribute("opacity",.6);});
+    rc.addEventListener("mouseleave",()=>{tip.style.opacity=0;xh.setAttribute("opacity",0);});
+  });
+  wrap.querySelectorAll(".pt").forEach(p=>{
+    const show=()=>{const r=byId(p.dataset.rid);const pr=period(r);const box=wrap.getBoundingClientRect(),b=p.getBoundingClientRect();
+      tip.innerHTML=`<b>${esc(r.label)} review</b><br>`+(r.missing?"Review document not found<br>":`New Business rating: ${r.scores[0]}<br>`)+(pr?`Prior ${pr.n} months: ${Math.round(pr.pct)}% of baseline`:"");
+      tip.style.left=(b.left+b.width/2-box.left)+"px";tip.style.top=(b.top-box.top)+"px";tip.style.opacity=1;};
+    p.addEventListener("mouseenter",show);p.addEventListener("focus",show);
+    p.addEventListener("mouseleave",()=>tip.style.opacity=0);p.addEventListener("blur",()=>tip.style.opacity=0);
+  });
+}
+function pctBars(){
+  const list=REVIEWS.filter(r=>period(r));
+  const W=900,H=300,L=56,R=16,T=34,B=58,MAX=160;
+  const slot=(W-L-R)/list.length,bw=Math.min(52,slot*.62);
+  const y=v=>T+(MAX-v)/MAX*(H-T-B);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Collections as a percent of baseline before each review">`;
+  [0,50,100,150].forEach(v=>s+=`<line class="grid-line" x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" ${v===100?'style="stroke:var(--soft);stroke-width:1.5;stroke-dasharray:5 5"':""}/><text class="axis-label" x="${L-8}" y="${y(v)+4}" text-anchor="end">${v}%</text>`);
+  list.forEach((r,i)=>{const p=period(r);const cx=L+slot*i+slot/2;const v=Math.min(p.pct,MAX);const sc=r.missing?null:r.scores[0];
+    const fill=sc==null?"transparent":sc>=4?"#0045C2":sc<=2?"#E34554":"var(--soft)";
+    s+=`<a href="#review/${r.id}" class="pt" aria-label="${esc(r.label)}: ${Math.round(p.pct)}% of baseline${sc?", rated "+sc:""}"><rect x="${cx-bw/2}" y="${y(v)}" width="${bw}" height="${y(0)-y(v)}" rx="8" fill="${fill}" ${sc==null?'stroke="var(--soft)" stroke-width="2" stroke-dasharray="4 4"':""}/>
+      <text class="val-label" x="${cx}" y="${y(v)-8}" text-anchor="middle">${Math.round(p.pct)}%</text>
+      <text class="axis-label" x="${cx}" y="${H-B+20}" text-anchor="middle">${r.short[0]} ${r.short[1].slice(2)}</text>
+      <text class="axis-label" x="${cx}" y="${H-B+38}" text-anchor="middle" style="font-weight:600;fill:var(--text)">${sc?"Rated "+sc:"\u2014"}</text></a>`;});
+  return s+`</svg>`;
+}
+
+/* generic sortable table */
+const TBL={};
+function sortTable(id,cols,rows,def){TBL[id]={cols,rows,k:def?def.k:null,dir:def?def.dir:1};return `<div class="scroll"><table class="dt" id="${id}"></table></div>`;}
+function drawTable(id){
+  const t=TBL[id],el=document.getElementById(id); if(!el) return;
+  const rows=[...t.rows];
+  if(t.k){const c=t.cols.find(c=>c.k===t.k);const v=c.sv||(r=>r[c.k]);rows.sort((a,b)=>{const x=v(a),y=v(b);return (x>y?1:x<y?-1:0)*t.dir;});}
+  el.innerHTML=`<thead><tr>${t.cols.map(c=>`<th class="${c.num?"n":""}"><button class="sh ${t.k===c.k?"on":""}" data-k="${c.k}">${esc(c.t)}<span class="arr">${t.k===c.k?(t.dir>0?"\u2191":"\u2193"):""}</span></button></th>`).join("")}</tr></thead>
+  <tbody>${rows.map(r=>`<tr>${t.cols.map(c=>`<td class="${c.num?"n":""} ${c.cls?c.cls(r):""}">${c.html?c.html(r):esc(c.fmt?c.fmt(r[c.k]):r[c.k])}</td>`).join("")}</tr>`).join("")}</tbody>`;
+  el.querySelectorAll("button.sh").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.k,c=t.cols.find(c=>c.k===k);
+    if(t.k!==k){t.k=k;t.dir=c.num?-1:1;} else if(t.dir===(c.num?-1:1)) t.dir=-t.dir; else {t.k=null;}
+    drawTable(id);}));
+}
+
+let NUM_STATE={metric:"col",smooth:false};
+function vNumbers(){
+  const per=REVIEWS.map(r=>({r,p:period(r)})).filter(x=>x.p).map(({r,p})=>({id:r.id,label:r.label,date:r.date,missing:!!r.missing,nbg:r.missing?null:r.scores[0],cr:r.missing?null:r.scores[1],per:ymLabel(p.start).replace(" 20"," \u2019")+" \u2013 "+ymLabel(p.end).replace(" 20"," \u2019"),...p}));
+  const years=[];for(let y=1;(y-1)*12<MD.length;y++){const w=MD.slice((y-1)*12,y*12);const sum=k=>w.reduce((a,x)=>a+x[k],0);const last=w[w.length-1];
+    years.push({y,label:"Year "+y,range:ymLabel(w[0].ym)+" \u2013 "+ymLabel(last.ym)+(w.length<12?` (${w.length} mo)`:""),base:sum("base"),col:sum("col"),pct:sum("col")/sum("base")*100,diff:sum("col")-sum("base"),cadd:sum("cadd"),clost:sum("clost"),acc:last.acc,ret:last.ret,cum:last.cum});}
+  const cls=v=>v>=0?"pos":"neg";
+  const perCols=[
+    {k:"label",t:"Review",sv:r=>r.date,html:r=>`<a href="#review/${r.id}">${esc(r.label)}</a>`},
+    {k:"per",t:"Period",sv:r=>r.start},
+    {k:"nbg",t:"New Business rating",num:true,sv:r=>r.nbg??-1,html:r=>r.nbg?`<span class="tag ${scoreCls(r.nbg)}">${r.nbg}</span>`:`<span class="muted">not found</span>`},
+    {k:"col",t:"Collections",num:true,fmt:fmt$},
+    {k:"pct",t:"% of baseline",num:true,html:r=>`<span class="${cls(r.pct-100)}">${Math.round(r.pct)}%</span>`},
+    {k:"vs",t:"vs other associates",num:true,html:r=>`<span class="${cls(r.vs)}">${sgn$(r.vs)}</span>`},
+    {k:"cadd",t:"Clients added",num:true},
+    {k:"clost",t:"Clients lost",num:true},
+    {k:"acc",t:"Accounts at end",num:true},
+    {k:"ret",t:"Avg retainer at end",num:true,fmt:fmt$}];
+  const yrCols=[
+    {k:"label",t:"Career year",sv:r=>r.y},{k:"range",t:"Months",sv:r=>r.y},
+    {k:"base",t:"Baseline",num:true,fmt:fmt$},{k:"col",t:"Collections",num:true,fmt:fmt$},
+    {k:"pct",t:"% of baseline",num:true,html:r=>`<span class="${cls(r.pct-100)}">${Math.round(r.pct)}%</span>`},
+    {k:"cadd",t:"Clients added",num:true},{k:"clost",t:"Clients lost",num:true},
+    {k:"acc",t:"Accounts at year end",num:true},{k:"ret",t:"Avg retainer at year end",num:true,fmt:fmt$},
+    {k:"cum",t:"Running total vs others",num:true,html:r=>`<span class="${cls(r.cum)}">${sgn$(r.cum)}</span>`}];
+  return head("g-numbers","The numbers","From the Dan (DF) tab \u00b7 June 2021 \u2013 July 2026") + `
+  <section class="card"><h3>New Business rating vs collections against baseline</h3>
+  <p class="sub">Collections as a percent of baseline in the six months before each review. Bar color is the New Business rating.</p>
+  <div class="chart-wrap">${pctBars()}</div>
+  <div class="key"><span><i class="s4"></i>Rated 4</span><span><i style="background:var(--soft)"></i>Rated 3</span><span><i class="s2"></i>Rated 2</span><span><i style="box-shadow:inset 0 0 0 2px var(--soft)"></i>Review not found</span></div></section>
+  <section class="card"><h3>Month by month</h3><p class="sub">Numbered circles are reviews, showing the New Business rating. Hover the chart for any month.</p>
+  <div class="chips" id="mchips">${NUM_METRICS.map(m=>`<button class="chip" aria-pressed="${NUM_STATE.metric===m.k}" data-m="${m.k}">${esc(m.name)}</button>`).join("")}</div>
+  <div class="chips" id="schip" style="margin-top:-6px"></div>
+  <div class="chart-wrap" id="c-num"></div><div class="key" id="nkey"></div></section>
+  <h4 class="blk">Each review period</h4><p class="muted" style="margin:-4px 4px 10px;font-size:14px">Tap any column header to sort.</p>
+  ${sortTable("tPer",perCols,per,{k:"label",dir:-1})}
+  <h4 class="blk">By career year</h4><p class="muted" style="margin:-4px 4px 10px;font-size:14px">Career years run June to May. Year 6 is two months so far.</p>
+  ${sortTable("tYr",yrCols,years,{k:"label",dir:1})}
+  <p class="chart-note" style="margin-top:16px">Baseline is the Performance-sheet quota. \u201cOther associates\u201d is the average of Aaron, Brian, Shad, Rob and Emily at the same career month. Average retainer reads high in months with catch-up payments.</p>`;
+}
+function wireNumbers(){
+  const draw=()=>{const m=NUM_METRICS.find(z=>z.k===NUM_STATE.metric);const w=$("#c-num");w.innerHTML=numChart(m,NUM_STATE.smooth);wireNumChart(w,m,NUM_STATE.smooth);
+    document.querySelectorAll("#mchips .chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===m.k));
+    $("#schip").innerHTML=m.smooth?`<button class="chip" aria-pressed="${NUM_STATE.smooth}" id="smooth">3-month average</button>`:"";
+    const sb=$("#smooth");if(sb)sb.addEventListener("click",()=>{NUM_STATE.smooth=!NUM_STATE.smooth;draw();});
+    $("#nkey").innerHTML=m.series.map(se=>`<span><i style="background:${(isDark()&&se.dark)?se.dark:se.color}"></i>${esc(se.name)}</span>`).join("");};
+  document.querySelectorAll("#mchips .chip").forEach(b=>b.addEventListener("click",()=>{NUM_STATE.metric=b.dataset.m;draw();}));
+  draw(); drawTable("tPer"); drawTable("tYr");
+}
+
+/* ---------- traits & behaviors: spreadsheet-style sort/filter ---------- */
+let SHOWN=new Set(REAL.map(r=>r.id));
+const MX={
+  traits:{name:"Trait",rows:TRAITS.map(([k,n,def],i)=>({i,key:k,label:n,def,vals:Object.fromEntries(REAL.map(r=>[r.id,r.st.includes(k)?"ST":r.ot.includes(k)?"OT":""]))})),
+    order:{ST:2,OT:1,"":0},opts:[["All",null],["ST",v=>v==="ST"],["OT",v=>v==="OT"],["ST or OT",v=>v!==""],["Blank",v=>v===""]],
+    counts:[{k:"cST",t:"ST",fn:(r,c)=>c.filter(id=>r.vals[id]==="ST").length},{k:"cOT",t:"OT",fn:(r,c)=>c.filter(id=>r.vals[id]==="OT").length}],
+    cell:(v,r)=>v==="ST"?`<td class="st" title="${esc(r.label)}: strong trait">ST</td>`:v==="OT"?`<td class="ot" title="${esc(r.label)}: opportunity trait">OT</td>`:`<td class="ee"></td>`,
+    sort:null,dir:-1,f:{},q:"",open:new Set()},
+  beh:{name:"Behavior",rows:BEHAVIORS.map((b,i)=>({i,key:"b"+i,label:b,vals:Object.fromEntries(REAL.map(r=>[r.id,r.beh[i]])),notes:Object.fromEntries(REAL.map(r=>[r.id,r.behNote&&r.behNote[i]]))})),
+    order:{Y:2,E:1,N:0},opts:[["All",null],["Yes",v=>v==="Y"],["No",v=>v==="N"],["Ehh",v=>v==="E"],["Not Yes",v=>v!=="Y"]],
+    counts:[{k:"cY",t:"Yes",fn:(r,c)=>c.filter(id=>r.vals[id]==="Y").length},{k:"cN",t:"Not Yes",fn:(r,c)=>c.filter(id=>r.vals[id]!=="Y").length}],
+    cell:(v,r,row)=>{const n=row.notes[r.id];const t=n?` (${n})`:"";return v==="Y"?`<td class="yes" title="${esc(r.label)}: Yes${esc(t)}">Yes</td>`:v==="E"?`<td class="ehh" title="${esc(r.label)}: EHH">Ehh</td>`:`<td class="no" title="${esc(r.label)}: No${esc(t)}">No${n?"*":""}</td>`;},
+    sort:null,dir:-1,f:{},q:"",open:new Set()}
+};
+const visCols=()=>REAL.filter(r=>SHOWN.has(r.id));
+function mxRows(name){
+  const S=MX[name],cols=visCols(),ids=cols.map(r=>r.id);
+  let rows=S.rows.filter(row=>(!S.q||row.label.toLowerCase().includes(S.q.toLowerCase())) &&
+    Object.entries(S.f).every(([id,oi])=>!ids.includes(id)||!S.opts[oi][1]||S.opts[oi][1](row.vals[id])));
+  if(S.sort){const cnt=S.counts.find(c=>c.k===S.sort);
+    const v=row=>S.sort==="label"?row.label:cnt?cnt.fn(row,ids):S.order[row.vals[S.sort]];
+    rows=[...rows].sort((a,b)=>{const x=v(a),y=v(b);return ((x>y?1:x<y?-1:0)*(S.sort==="label"?-S.dir:S.dir))||a.i-b.i;});}
+  return {rows,cols,ids};
+}
+function mxBody(name){
+  const S=MX[name],{rows,cols,ids}=mxRows(name);
+  if(!rows.length) return `<tr class="empty-row"><td colspan="${cols.length+1+S.counts.length}">No rows match these filters.</td></tr>`;
+  return rows.map(row=>{
+    const th=name==="traits"?`<th class="rowh rv-open" scope="row" tabindex="0" data-open="${row.key}" aria-expanded="${S.open.has(row.key)}">${esc(row.label)}</th>`:`<th class="rowh" scope="row">${esc(row.label)}</th>`;
+    let tr=`<tr>${th}${cols.map(r=>S.cell(row.vals[r.id],r,row)).join("")}${S.counts.map(c=>`<td class="cnt">${c.fn(row,ids)}</td>`).join("")}</tr>`;
+    if(name==="traits"&&S.open.has(row.key)) tr+=`<tr class="def"><td colspan="${cols.length+1+S.counts.length}">${esc(row.def)}</td></tr>`;
+    return tr;}).join("");
+}
+function mxTable(name){
+  const S=MX[name],cols=visCols();
+  const arr=k=>S.sort===k?`<span class="arr">${(k==="label"?-S.dir:S.dir)>0?"\u2191":"\u2193"}</span>`:`<span class="arr"></span>`;
+  const on=k=>S.sort===k?"on":"";
+  return `<thead><tr><th class="rowh" style="background:transparent"><button class="sh ${on("label")}" data-sort="label">${S.name}${arr("label")}</button></th>
+   ${cols.map(r=>`<th><button class="sh ${on(r.id)}" data-sort="${r.id}" title="Sort by ${esc(r.label)}">${r.short[0]}<br>${r.short[1]}${arr(r.id)}</button></th>`).join("")}
+   ${S.counts.map(c=>`<th><button class="sh ${on(c.k)}" data-sort="${c.k}">${c.t}<br>count${arr(c.k)}</button></th>`).join("")}</tr>
+   <tr class="frow"><th><input type="search" data-q placeholder="Filter ${S.name.toLowerCase()}s" value="${esc(S.q)}" class="${S.q?"act":""}" aria-label="Filter by name"></th>
+   ${cols.map(r=>`<th><select data-f="${r.id}" aria-label="Filter ${esc(r.label)}" class="${S.f[r.id]?"act":""}">${S.opts.map((o,oi)=>`<option value="${oi}" ${(S.f[r.id]||0)==oi?"selected":""}>${o[0]}</option>`).join("")}</select></th>`).join("")}
+   ${S.counts.map(()=>`<th></th>`).join("")}</tr></thead><tbody>${mxBody(name)}</tbody>`;
+}
+function mxStatus(name){const S=MX[name];const n=mxRows(name).rows.length;const act=S.sort||S.q||Object.keys(S.f).length;
+  return `<span>Showing ${n} of ${S.rows.length}</span>${act?`<button class="clear" data-clear="${name}">Clear sort and filters</button>`:""}`;}
+function drawMx(name){
+  const el=document.getElementById("mx-"+name);el.innerHTML=mxTable(name);
+  document.getElementById("st-"+name).innerHTML=mxStatus(name);
+}
+function vTraits(){
+  const chips=REAL.map(r=>`<button class="chip" data-col="${r.id}" aria-pressed="${SHOWN.has(r.id)}">${r.short[0]} ${r.short[1]}</button>`).join("");
+  return head("g-traits","Traits and behaviors") + `
+  <section class="card"><h3>Reviews shown</h3><p class="sub">Hide review columns to compare a narrower stretch. Counts update to match.</p>
+  <div class="chips colchips" id="colchips">${chips}<button class="chip" data-preset="all" style="background:var(--stable);color:#fff">Show all</button><button class="chip" data-preset="recent" style="background:var(--stable);color:#fff">Last 4</button></div></section>
+  <h4 class="blk">Career development traits</h4>
+  <p class="muted" style="margin:-4px 4px 12px;font-size:14px">Tap a header to sort. Use the row under the headers to filter. Tap a trait to see what it means on the form.</p>
+  <div class="mx-tools" id="st-traits"></div>
+  <div class="scroll"><table class="mx" id="mx-traits"></table></div>
+  <div class="key"><span><i class="st"></i>Strong trait</span><span><i class="ot"></i>Opportunity trait</span><span>September 2026 has one strong trait marked</span></div>
+  <h4 class="blk">Business management behaviors</h4>
+  <div class="mx-tools" id="st-beh"></div>
+  <div class="scroll"><table class="mx" id="mx-beh"></table></div>
+  <div class="key"><span><i class="yes" style="box-shadow:inset 0 0 0 1px var(--line)"></i>Yes</span><span><i class="no"></i>No</span><span><i class="ehh"></i>EHH</span><span>* marked with a note or asterisk on the form</span></div>`;
+}
+function wireTraits(){
+  ["traits","beh"].forEach(name=>{
+    drawMx(name);
+    const tbl=document.getElementById("mx-"+name),S=MX[name];
+    tbl.addEventListener("click",e=>{
+      const b=e.target.closest("[data-sort]");
+      if(b){const k=b.dataset.sort;if(S.sort!==k){S.sort=k;S.dir=-1;}else if(S.dir===-1)S.dir=1;else S.sort=null;drawMx(name);return;}
+      const o=e.target.closest("[data-open]");
+      if(o){const k=o.dataset.open;S.open.has(k)?S.open.delete(k):S.open.add(k);tbl.querySelector("tbody").innerHTML=mxBody(name);}
+    });
+    tbl.addEventListener("keydown",e=>{const o=e.target.closest("[data-open]");if(o&&(e.key==="Enter"||e.key===" ")){e.preventDefault();o.click();}});
+    tbl.addEventListener("change",e=>{const s=e.target.closest("select[data-f]");if(!s)return;const v=+s.value;if(v)S.f[s.dataset.f]=v;else delete S.f[s.dataset.f];drawMx(name);});
+    tbl.addEventListener("input",e=>{const q=e.target.closest("input[data-q]");if(!q)return;S.q=q.value;q.classList.toggle("act",!!S.q);tbl.querySelector("tbody").innerHTML=mxBody(name);document.getElementById("st-"+name).innerHTML=mxStatus(name);});
+    document.getElementById("st-"+name).addEventListener("click",e=>{if(e.target.closest("[data-clear]")){S.sort=null;S.f={};S.q="";drawMx(name);}});
+  });
+  $("#colchips").addEventListener("click",e=>{
+    const b=e.target.closest(".chip");if(!b)return;
+    if(b.dataset.preset==="all") SHOWN=new Set(REAL.map(r=>r.id));
+    else if(b.dataset.preset==="recent") SHOWN=new Set(REAL.slice(-4).map(r=>r.id));
+    else {const id=b.dataset.col;if(SHOWN.has(id)){if(SHOWN.size===1)return;SHOWN.delete(id);}else SHOWN.add(id);}
+    document.querySelectorAll("#colchips .chip[data-col]").forEach(c=>c.setAttribute("aria-pressed",SHOWN.has(c.dataset.col)));
+    ["traits","beh"].forEach(drawMx);
+  });
+}
+
 /* ---------- views ---------- */
 function vHome(){
   return `<div class="home-title"><div class="who">Dan Faber</div><h1>Six-month reviews</h1></div>
@@ -515,6 +817,15 @@ function vHome(){
   <div class="tiles">${SECTIONS.map(s=>`<a class="tile ${s.cls}" href="${s.h}"><span><span class="t-name">Dan Faber</span><span class="t-title">${esc(s.name)}</span></span><span class="ico">${ICONS[s.ico]}</span></a>`).join("")}</div>`;
 }
 
+function numChanges(){
+  const P=id=>period(byId(id)),pc=id=>Math.round(P(id).pct)+"%";
+  const minC=MD.reduce((a,b)=>b.cum<a.cum?b:a),maxC=MD.reduce((a,b)=>b.cum>a.cum?b:a),firstAhead=MD.find(d=>d.cum>0&&MD.filter(z=>z.m>d.m).every(z=>z.cum>0));
+  const peakA=MD.reduce((a,b)=>b.acc>a.acc?b:a),firstRet=MD.find(d=>d.ret>0);
+  return `<li>Your New Business rating tracks collections against baseline in the six months before each review.<span class="q">Rated 4: ${pc("2023-10")}, ${pc("2024-03")} and ${pc("2025-09")} of baseline. Rated 3: ${pc("2024-09")} and ${pc("2025-03")}. Rated 2: ${pc("2022-09")}, ${pc("2026-03")} and ${pc("2026-09")} (${P("2026-09").n} months so far). October 2021 was ${pc("2021-10")} across your first ${P("2021-10").n} months.</span><span class="q">“That one’s very easy to measure because you’re literally basing it off of numbers.” — Aaron, March 2024</span></li>
+  <li>Against the other associates at the same career month, your running total was behind through ${ymLabel(MD[firstAhead.m-2].ym)} (low of ${fmt$(minC.cum)} in ${ymLabel(minC.ym)}), ahead every month since ${ymLabel(firstAhead.ym)}, peaked at ${sgn$(maxC.cum)} in ${ymLabel(maxC.ym)}, and is ${sgn$(LASTM.cum)} as of ${ymLabel(LASTM.ym)}.</li>
+  <li>Fewer, bigger accounts: active accounts peaked at ${peakA.acc} in ${ymLabel(peakA.ym)} and were ${LASTM.acc} in ${ymLabel(LASTM.ym)}. Average retainer went from ${fmt$(firstRet.ret)} in ${ymLabel(firstRet.ym)} to ${fmt$(LASTM.ret)}.</li>
+  <li>Clients lost outpaced clients added before March 2024 (${P("2024-03").clost} lost, ${P("2024-03").cadd} added) and March 2026 (${P("2026-03").clost} lost, ${P("2026-03").cadd} added). Both reviews rated Client Retention a 3.</li>`;
+}
 function vChanges(){
   const yes=REAL.map(r=>r.beh.filter(b=>b==="Y").length).join(", ");
   return head("g-changes","What changed") + `
@@ -526,6 +837,8 @@ function vChanges(){
     <li>Client Retention, Training and Coaching have stayed between 3 and 4 every review.</li>
     <li>Ratings are scored against tenure.<span class="q">\u201cA three in year three is different than a three in year nine.\u201d \u2014 Aaron, March 2024</span></li>
   </ul></div>
+  <h4 class="blk">The numbers</h4>
+  <div class="card"><ul class="pts">${numChanges()}</ul></div>
   <h4 class="blk">Traits</h4>
   <div class="card"><ul class="pts">
     <li>Professional Maturity: strong trait in 6 of 9 reviews, including the last two.<span class="q">\u201cYour attitude with past 3 months is MUCH more even keel compared to 3 years ago.\u201d \u2014 March 2026</span></li>
@@ -580,35 +893,6 @@ function wireScores(){
   draw();
 }
 
-function vTraits(){
-  const cols=REAL.map(r=>`<th>${r.short[0]}<br>${r.short[1]}</th>`).join("");
-  const traitRows=TRAITS.map(([k,n,def],idx)=>{
-    const stc=REAL.filter(r=>r.st.includes(k)).length, otc=REAL.filter(r=>r.ot.includes(k)).length;
-    const cells=REAL.map(r=>r.st.includes(k)?`<td class="st" title="${esc(r.label)}: strong trait">ST</td>`:r.ot.includes(k)?`<td class="ot" title="${esc(r.label)}: opportunity trait">OT</td>`:`<td class="ee"></td>`).join("");
-    return `<tr class="clk" data-i="${idx}"><th class="rowh" scope="row" tabindex="0" aria-expanded="false">${esc(n)}</th>${cells}<td class="cnt">${stc?stc+" ST":""}${stc&&otc?"<br>":""}${otc?otc+" OT":""}</td></tr><tr class="def" data-d="${idx}" hidden><td colspan="${REAL.length+2}">${esc(def)}</td></tr>`;
-  }).join("");
-  const behRows=BEHAVIORS.map((b,i)=>{
-    const yc=REAL.filter(r=>r.beh[i]==="Y").length;
-    const cells=REAL.map(r=>{const v=r.beh[i];const n=r.behNote&&r.behNote[i]?` (${r.behNote[i]})`:"";
-      return v==="Y"?`<td class="yes" title="${esc(r.label)}: Yes${esc(n)}">Yes</td>`:v==="E"?`<td class="ehh" title="${esc(r.label)}: EHH">Ehh</td>`:`<td class="no" title="${esc(r.label)}: No${esc(n)}">No${n?"*":""}</td>`;}).join("");
-    return `<tr><th class="rowh" scope="row">${esc(b)}</th>${cells}<td class="cnt">${yc} of ${REAL.length}</td></tr>`;
-  }).join("");
-  return head("g-traits","Traits and behaviors") + `
-  <h4 class="blk">Career development traits</h4>
-  <p class="muted" style="margin:-4px 4px 12px;font-size:14px">Tap a trait to see what it means on the form.</p>
-  <div class="scroll"><table class="mx" id="traitTbl"><thead><tr><th></th>${cols}<th></th></tr></thead><tbody>${traitRows}</tbody></table></div>
-  <div class="key"><span><i class="st"></i>Strong trait</span><span><i class="ot"></i>Opportunity trait</span><span>September 2026 has one strong trait marked</span></div>
-  <h4 class="blk">Business management behaviors</h4>
-  <div class="scroll"><table class="mx"><thead><tr><th></th>${cols}<th></th></tr></thead><tbody>${behRows}</tbody></table></div>
-  <div class="key"><span><i class="yes" style="box-shadow:inset 0 0 0 1px var(--line)"></i>Yes</span><span><i class="no"></i>No</span><span><i class="ehh"></i>EHH</span><span>* marked with a note or asterisk on the form</span></div>`;
-}
-function wireTraits(){
-  document.querySelectorAll("#traitTbl tr.clk th").forEach(th=>{
-    const tog=()=>{const i=th.parentElement.dataset.i;const d=document.querySelector(`#traitTbl tr[data-d="${i}"]`);d.hidden=!d.hidden;th.setAttribute("aria-expanded",!d.hidden);};
-    th.addEventListener("click",tog); th.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tog();}});
-  });
-}
-
 function vGoals(){
   const rows=REVIEWS.filter(r=>r.reviewed&&r.reviewed.length).map(r=>{
     const scored=r.reviewed.filter(g=>!["unrated","dropped"].includes(g.o));
@@ -643,7 +927,7 @@ function vReview(id){
   const pn=`<div class="pn">${prev?`<a href="#review/${prev.id}">\u2190 ${esc(prev.label)}</a>`:""}<span class="sp"></span>${next?`<a href="#review/${next.id}">${esc(next.label)} \u2192</a>`:""}</div>`;
   if(r.missing){
     return head("g-reviews",r.label+" review","Review document not found") + pn +
-      `<div class="note-card">${esc(r.note)}</div>` +
+      `<div class="note-card">${esc(r.note)}</div>` + numCard(r) +
       (r.set.length?`<h4 class="blk">Goals set</h4><div class="card"><ol class="goals">${r.set.map(g=>`<li>${esc(g)}</li>`).join("")}</ol></div>`:"") + ctxBlock(r);
   }
   const bars=DUTIES.map((d,k)=>`<div class="bar"><span class="bl">${esc(d)}</span><span class="bt"><span class="bf" style="width:${r.scores[k]/5*100}%;background:${SERIES[k+1].color}"></span></span><span class="bv">${r.scores[k]}</span></div>`).join("");
@@ -655,6 +939,7 @@ function vReview(id){
   return head("g-reviews",r.label+" review","Evaluator "+esc(r.evaluator)) + pn + `
   <h4 class="blk" style="margin-top:6px">Ratings</h4>
   <div class="card"><div class="bars">${bars}</div><div class="avg-line">Average <b>${r.avg.toFixed(2)}</b></div>${notes}</div>
+  ${numCard(r)}
   <h4 class="blk">Traits</h4>
   <div class="card"><div class="lbl-s">Strong</div><div class="pill-row">${r.st.map(k=>`<span class="pill st">${esc(traitName(k))}</span>`).join("")}</div>
   <div class="lbl-s">Opportunity</div><div class="pill-row">${r.ot.map(k=>`<span class="pill ot">${esc(traitName(k))}</span>`).join("")}</div></div>
@@ -673,6 +958,7 @@ function route(){
   else switch(h){
     case "#changes": html=vChanges(); break;
     case "#scores": html=vScores(); wire=wireScores; break;
+    case "#numbers": html=vNumbers(); wire=wireNumbers; break;
     case "#traits": html=vTraits(); wire=wireTraits; break;
     case "#goals": html=vGoals(); break;
     case "#reviews": html=vReviews(); break;
